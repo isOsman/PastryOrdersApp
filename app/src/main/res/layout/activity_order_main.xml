@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/topView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/noOrders"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:background="@color/colorPink"
+            android:textColor="#ffffff"
+            android:layout_marginBottom="15dp"
+
+            />
+    <ListView
+        android:id="@+id/orderList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="70dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="+"
+        android:textSize="35sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:backgroundTint="@color/colorPink"/>
+
+</RelativeLayout>

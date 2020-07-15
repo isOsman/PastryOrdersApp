@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/orderIdEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/orderNumber"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:background="@color/colorPink"
+            android:textColor="#ffffff"
+            android:layout_marginBottom="15dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/customer"
+            android:textSize="22sp"
+            android:textAlignment="center"/>
+        <EditText
+            android:id="@+id/customerEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cake"
+            android:textSize="22sp"
+            android:textAlignment="center" />
+        <EditText
+            android:id="@+id/cakeEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/orderDate"
+            android:textSize="22sp"
+            android:textAlignment="center" />
+        <DatePicker
+            android:id="@+id/orderDateEdit"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sendDate"
+            android:textSize="22sp"
+            android:textAlignment="center" />
+        <DatePicker
+            android:id="@+id/sendDateEdit"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/weight"
+            android:textSize="22sp"
+            android:textAlignment="center" />
+        <EditText
+            android:id="@+id/weightEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/price"
+            android:textSize="22sp"
+            android:textAlignment="center" />
+        <EditText
+            android:id="@+id/priceEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/made"
+            android:textSize="22sp"
+            android:textAlignment="center" />
+        <CheckBox
+            android:id="@+id/madeBoxEdit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/madeFalse"
+            android:textSize="18sp" />
+        <View
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/colorPink"/>
+        <Button
+            android:id="@+id/okBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPink"
+            android:textColor="#ffffff"
+            android:text="@string/ok" />
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"/>
+
+
+    </LinearLayout>
+
+</ScrollView>
+

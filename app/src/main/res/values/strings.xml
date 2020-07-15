@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Мои заказы</string>
+    <string name="customer">"Кому:"</string>
+    <string name="cake">"Торт:"</string>
+    <string name="orderDate">"Дата заказа:"</string>
+    <string name="sendDate">"Дата отправки:"</string>
+    <string name="weight">"Масса:"</string>
+    <string name="price">"Цена:"</string>
+    <string name="made">"Выполнен"</string>
+    <string name="weight_unit">"кг"</string>
+    <string name="price_unit">"тг"</string>
+    <string name="add">"Добавить"</string>
+    <string name="edit">"Редактировать"</string>
+    <string name="remove">"Удалить"</string>
+    <string name="madeTrue">"Да"</string>
+    <string name="madeFalse">"Нет"</string>
+    <string name="ok">"Сохранить"</string>
+    <string name="cancel">"Отмена"</string>
+    <string name="checkDate">"Проверьте дату"</string>
+    <string name="checkView">"Проверьте данные"</string>
+    <string name="added">"Добавлено"</string>
+    <string name="changed">"Изменено"</string>
+    <string name="orderNumber">"Номер заказа:"</string>
+    <string name="orderAdd">"Новый заказ"</string>
+    <string name="noOrders">"Добавьте свой \nпервый заказ"</string>
+    <string name="orderCount">"Заказов:"</string>
+
+</resources>
+
