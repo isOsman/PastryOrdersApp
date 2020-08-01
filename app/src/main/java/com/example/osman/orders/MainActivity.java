@@ -1,9 +1,14 @@
 package com.example.osman.orders;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -12,6 +17,8 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 
@@ -26,12 +33,21 @@ public class MainActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_main);
 
-        storage = new Storage(this);
+
+        Intent serviceIntent = new Intent(this,MyService.class);
+        if(!isMyServiceRunning(MyService.class)) {
+            startService(serviceIntent);
+        }
+
+
         try {
+            storage = new Storage(this);
             storage.init();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+
 
         ListView ordersList;
         topView = (TextView) findViewById(R.id.topView);
@@ -44,7 +60,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
             }else{
                 topView.setText(String.valueOf(getString(R.string.orderCount) + orders.size()));
             }
-
 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -60,6 +75,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
 
     }
+
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -111,5 +129,20 @@ public class MainActivity extends Activity implements View.OnClickListener{
             intent.setClass(this,OrderAdd.class);
             startActivityForResult(intent,Request.ORDER_ADD);
     }
+
+
+
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }
 

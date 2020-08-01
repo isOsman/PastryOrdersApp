@@ -8,7 +8,7 @@
     <string name="price">"Цена:"</string>
     <string name="made">"Выполнен"</string>
     <string name="weight_unit">"кг"</string>
-    <string name="price_unit">"тг"</string>
+    <string name="price_unit">"руб."</string>
     <string name="add">"Добавить"</string>
     <string name="edit">"Редактировать"</string>
     <string name="remove">"Удалить"</string>
