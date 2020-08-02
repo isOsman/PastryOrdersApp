@@ -34,10 +34,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_order_main);
 
 
-        Intent serviceIntent = new Intent(this,MyService.class);
-        if(!isMyServiceRunning(MyService.class)) {
-            startService(serviceIntent);
-        }
+//        Intent serviceIntent = new Intent(this,MyService.class);
+//        if(!isMyServiceRunning(MyService.class)) {
+//            startService(serviceIntent);
+//        }
 
 
         try {
@@ -46,6 +46,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+        //setAlarm();
 
 
 
@@ -76,7 +78,20 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     }
 
+    private void setAlarm() {
+        Log.d("MYTAG","Start Alarm");
+        Intent intent = new Intent(this,MyReceiver.class);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(this,0,intent,0);
 
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR,3);
+        calendar.set(Calendar.MINUTE,51);
+
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),TimeUnit.MINUTES.toMillis(1),alarmIntent);
+
+
+    }
 
 
     @Override

@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import java.util.concurrent.TimeUnit;
 
@@ -39,9 +40,9 @@ public class MyService extends Service {
                 .setContentIntent(contentIntent)
                 .setDefaults(Notification.DEFAULT_ALL);
 
-        startForeground(NOTIFICATION_ID,builder.build());
-        //NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        //notificationManager.notify(NOTIFICATION_ID,builder.build());
+        //startForeground(NOTIFICATION_ID,builder.build());
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(NOTIFICATION_ID,builder.build());
     }
 
 
@@ -51,11 +52,13 @@ public class MyService extends Service {
         protected Void doInBackground(Void... voids) {
             while(true) {
                 try {
-                    TimeUnit.DAYS.sleep(1);
+                    Log.d("MYTAG","Start Task");
+                    TimeUnit.MINUTES.sleep(1);
+                    showNotification();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                showNotification();
+
             }
         }
     }

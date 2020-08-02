@@ -2,9 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.osman.orders">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SET_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -13,35 +14,23 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TopLevelActivity"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OrderEdit"></activity>
-        <activity android:name=".OrderAdd"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".OrderEdit" />
+        <activity android:name=".OrderAdd" />
+        <activity android:name=".MainActivity"></activity>
 
-        </activity>
-
-        <service
-            android:name=".MyService"
+        <receiver
+            android:name=".MyReceiver"
             android:enabled="true"
-            android:exported="true"/>
-
-
-        <receiver android:name=".MyReceiver"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED"
-            android:enabled="true">
-
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="android.intent.action.REBOOT"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </receiver>
-
+            android:process=":remote"></receiver>
     </application>
 
 </manifest>
