@@ -1,9 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TopLevelActivity">
+    android:orientation="vertical"
+    android:padding="@dimen/basic_padding">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:src="@drawable/logo"
+        />
+
+    <Button
+        android:id="@+id/orderBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/basic_margin"
+        android:background="@drawable/btn_background"
+        android:text="@string/ordersItem"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/basic_text_size"
+        android:textColor="#ffffff"
+        android:onClick="btnClick"/>
+
+
+
+    <Button
+        android:id="@+id/recipesBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/basic_margin"
+        android:background="@drawable/btn_background"
+        android:text="@string/recipesItem"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/basic_text_size"
+        android:textColor="#ffffff"/>
+
+    <Button
+        android:id="@+id/tipsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/basic_margin"
+        android:background="@drawable/btn_background"
+        android:text="@string/tipsItem"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/basic_text_size"
+        />
+
+</LinearLayout>

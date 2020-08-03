@@ -24,6 +24,12 @@
     <string name="orderAdd">"Новый заказ"</string>
     <string name="noOrders">"Добавьте свой \nпервый заказ"</string>
     <string name="orderCount">"Заказов:"</string>
+<!--    TopLevelActivity-->
+    <string name="ordersItem">"Заказы"</string>
+    <string name="recipesItem">"Рецепты"</string>
+    <string name="tipsItem">"Советы"</string>
 
+<!--    SplashActivity-->
+    <string name="partner">Совместо с @SHIRIN_CAKES_</string>
 </resources>
 

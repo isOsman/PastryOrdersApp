@@ -14,6 +14,14 @@
         android:scaleX="1"
         android:scaleY="1"/>
 
+    <TextView
+        android:id="@+id/partnerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/basic_margin"
+        android:text="@string/partner"
+        android:layout_gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
     </LinearLayout>
