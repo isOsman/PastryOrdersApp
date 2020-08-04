@@ -38,7 +38,7 @@ public class Storage {
 
     private Storage(Context context) throws IOException, ClassNotFoundException {
         Log.d(TAG,"new Storage Instance");
-        this.context = context;
+        this.context = context.getApplicationContext();
         init();
     }
 
