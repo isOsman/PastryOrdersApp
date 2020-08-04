@@ -13,4 +13,5 @@
     android:enabled="true"
     android:textIsSelectable="true"
     android:longClickable="true"
+    android:id="@+id/tip_item"
     />

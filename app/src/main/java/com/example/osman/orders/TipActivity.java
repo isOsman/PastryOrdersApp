@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class TipActivity extends AppCompatActivity {
 
     @Override
@@ -12,13 +15,20 @@ public class TipActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tip);
 
+        ArrayList<Tip> tips = new ArrayList<>();
+        tips.add(new Tip("Используйте комара вместо мухи и слона",true));
+        tips.add(new Tip("Используйте комара вместо мухи и слона",false));
+        tips.add(new Tip("Используйте комара вместо мухи и слона или Используйте комара вместо мухи и слона",false));
 
-        String tip = "используйте муку только первого сорта" +
-                ",если вы собираетесь испекать в воде то нужно конечно комара выгнать,у него крылья не образивные,придется муху конечно заказывать" +
-                "но можно и муравьями обоийтись";
         ListView listView = (ListView) findViewById(R.id.tip_list);
-        String[] data = {"","","","",tip,"","","","sdfsdf","","","","","","","sdfsdf","","","","","",tip,"","","","sdfsdf","","","",tip};
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter(this,R.layout.tip_item,data);
-        listView.setAdapter(arrayAdapter);
+        try {
+            TipAdapter tipAdapter = new TipAdapter(this,R.layout.tip_item,tips,Storage.getInstance(this));
+            listView.setAdapter(tipAdapter);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 }
