@@ -24,12 +24,14 @@
     <string name="orderAdd">"Новый заказ"</string>
     <string name="noOrders">"Добавьте свой \nпервый заказ"</string>
     <string name="orderCount">"Заказов:"</string>
-<!--    TopLevelActivity-->
+    <!--    TopLevelActivity-->
     <string name="ordersItem">"Заказы"</string>
     <string name="recipesItem">"Рецепты"</string>
     <string name="tipsItem">"Советы"</string>
 
-<!--    SplashActivity-->
+    <!--    SplashActivity-->
     <string name="partner">Совместо с @SHIRIN_CAKES_</string>
+    <!--    Tips-->
+    <string name="tip_lock_text">нажмите что-бы открыть совет</string>
 </resources>
 

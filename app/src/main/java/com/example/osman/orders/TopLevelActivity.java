@@ -28,6 +28,8 @@ public class TopLevelActivity extends AppCompatActivity {
     public void btnClick(View view) {
         if(view.getId() == R.id.orderBtn){
             startActivity(new Intent(this,MainActivity.class));
+        }else if(view.getId() == R.id.tipsBtn){
+            startActivity(new Intent(this,TipActivity.class));
         }
     }
 }

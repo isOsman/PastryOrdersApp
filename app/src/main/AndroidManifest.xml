@@ -14,7 +14,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TopLevelActivity"></activity>
+        <activity android:name=".TipActivity"></activity>
+        <activity android:name=".TopLevelActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,8 +26,6 @@
         <activity android:name=".OrderEdit" />
         <activity android:name=".OrderAdd" />
         <activity android:name=".MainActivity" />
-
-
     </application>
 
 </manifest>

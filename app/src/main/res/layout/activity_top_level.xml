@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top"
         android:src="@drawable/logo"
-        />
+        android:contentDescription="@string/app_name" />
 
     <Button
         android:id="@+id/orderBtn"
@@ -25,8 +25,6 @@
         android:textSize="@dimen/basic_text_size"
         android:textColor="#ffffff"
         android:onClick="btnClick"/>
-
-
 
     <Button
         android:id="@+id/recipesBtn"
@@ -51,6 +49,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ffffff"
         android:textSize="@dimen/basic_text_size"
+        android:onClick="btnClick"
         />
 
 </LinearLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TipActivity"
+    android:padding="@dimen/basic_padding">
+
+    <ListView
+        android:id="@+id/tip_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/tip_item"
+        android:dividerHeight="20dp"
+        android:divider="@android:color/transparent"
+        android:scrollbars="none"/>
+
+</android.support.constraint.ConstraintLayout>
