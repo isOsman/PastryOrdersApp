@@ -1,12 +1,11 @@
 package com.example.osman.orders;
 
 import android.content.Context;
-import android.os.Environment;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,9 +15,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Storage {
+
+    //use singleton pattern
+    private static Storage instance;
+
     private String folderName = "Orders";
     private String dataName = "data.ord";
     private String idName = "id.ord";
+    private String tipName = "tip.ord";
 
     private FileInputStream fin;
     private FileOutputStream fos;
@@ -26,46 +30,28 @@ public class Storage {
     private File folder;
     private File dataFile;
     private File idFile;
+    private File tipFile;
 
-    String TAG = "FILETAG";
+    static String TAG = "FILETAG";
 
     private Context context;
 
-    public Storage(Context context){
+    private Storage(Context context) throws IOException, ClassNotFoundException {
+        Log.d(TAG,"new Storage Instance");
         this.context = context;
+        init();
     }
 
-    public String getFolderName() {
-        return folderName;
+    public static Storage getInstance(Context context) throws IOException, ClassNotFoundException {
+        if(instance == null){
+            instance = new Storage(context);
+
+        }
+        return  instance;
     }
 
-    public void setFolderName(String folderName) {
-        this.folderName = folderName;
-    }
 
-    public String getListName() {
-        return dataName;
-    }
 
-    public void setListName(String listName) {
-        this.dataName = listName;
-    }
-
-    public String getIdName() {
-        return idName;
-    }
-
-    public void setIdName(String idName) {
-        this.idName = idName;
-    }
-
-    public Context getContext() {
-        return context;
-    }
-
-    public void setContext(Context context) {
-        this.context = context;
-    }
 
     //initialize dir and files
     public void init() throws IOException, ClassNotFoundException{
@@ -98,7 +84,54 @@ public class Storage {
         }
 
 
+        //нужно переписывать проект,но мне лень
+        //прости меня Осман если ты сейчас читаешь это и переписываешь проект
+        //но я рад,что ты его переписываешь,потому-что если ты это делаешь - значит ты его обновляешь •ᴗ•:))
+        tipFile = new File(root + "/" + folderName,tipName);
+        if(!tipFile.exists()){
+            tipFile.createNewFile();
+            ArrayList<Tip> tips = new ArrayList<>();
+            tips.add(new Tip("tip1"));
+            tips.add(new Tip("tip2"));
+            tips.add(new Tip("tip3"));
+            writeTips(tips);
+            Log.d(TAG,"tip created: " + tipFile.getAbsolutePath());
+        }else{
+            Log.d(TAG,"tip ready");
+        }
+
+
     }
+
+    public void writeTips(ArrayList<Tip> tips) throws IOException{
+        Log.d(TAG,"writeTips()");
+        FileOutputStream fos = new FileOutputStream(tipFile);
+        ObjectOutputStream ois = new ObjectOutputStream(fos);
+        ois.writeObject(tips);
+        ois.close();
+        fos.close();
+        Log.d(TAG,"writeTips() END");
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public ArrayList<Tip> getTips() throws IOException, ClassNotFoundException {
+        Log.d(TAG,"getTips()");
+        //if file is emty then return null
+        if(tipFile.length() == 0) return null;
+
+        //else...
+        ArrayList<Tip> list = null;
+        FileInputStream fis = new FileInputStream(tipFile);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        list = (ArrayList<Tip>) ois.readObject();
+
+        ois.close();
+        fis.close();
+        Log.d(TAG,"getTips() END");
+        return list;
+    }
+
     //write id to file,id need for Order obj
     public void writeID(int id) throws IOException{
         Log.d(TAG,"writeID()");
@@ -157,13 +190,14 @@ public class Storage {
         return list;
     }
 
-    //print to debug console all records from list(file)
-    public void printList() throws IOException , ClassNotFoundException{
-        ArrayList<Order> orders = getList();
-            if(orders != null){
-                for (Order o : orders){
-                    Log.d(TAG,o.toString(context));
-                }
-            }
-    }
+
+//    //print to debug console all records from list(file)
+//    public void printList() throws IOException , ClassNotFoundException{
+//        ArrayList<Order> orders = getList();
+//            if(orders != null){
+//                for (Order o : orders){
+//                    Log.d(TAG,o.toString(context));
+//                }
+//            }
+//    }
 }

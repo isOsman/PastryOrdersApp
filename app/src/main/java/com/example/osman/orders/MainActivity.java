@@ -34,6 +34,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_order_main);
 
 
+
+
 //        Intent serviceIntent = new Intent(this,MyService.class);
 //        if(!isMyServiceRunning(MyService.class)) {
 //            startService(serviceIntent);
@@ -41,8 +43,21 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
 
         try {
-            storage = new Storage(this);
-            storage.init();
+            storage = Storage.getInstance(this);
+            ArrayList<Tip> tips = storage.getTips();
+            if(tips == null){
+                Log.d(storage.TAG,"tips is null");
+            }else{
+                Log.d(storage.TAG,"tips non null");
+                tips.get(1).setOpen(false);
+                storage.writeTips(tips);
+                tips = storage.getTips();
+                for(Tip tip : tips){
+                    Log.d(storage.TAG,tip.toString());
+                }
+            }
+
+
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
