@@ -6,17 +6,26 @@ public class Tip implements Serializable {
 
     private String text;
     private boolean open;
+    private boolean canOpen;
 
 
     //constructors
     public Tip(String text){
         this.text = text;
         this.open = false;
+        this.canOpen = false;
     }
 
     public Tip(String text, boolean open) {
         this.text = text;
         this.open = open;
+        this.canOpen = false;
+    }
+
+    public Tip(String text, boolean open,boolean canOpen) {
+        this.text = text;
+        this.open = open;
+        this.canOpen = canOpen;
     }
 
 
@@ -37,11 +46,20 @@ public class Tip implements Serializable {
         this.open = open;
     }
 
+    public boolean isCanOpen() {
+        return canOpen;
+    }
+
+    public void setCanOpen(boolean canOpen) {
+        this.canOpen = canOpen;
+    }
+
     @Override
     public String toString() {
         return "Tip{" +
                 "text='" + text + '\'' +
                 ", open=" + open +
+                ", canOpen=" + canOpen +
                 '}';
     }
 }

@@ -7,10 +7,11 @@ import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.annotation.Nullable;
 import android.text.TextPaint;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 public class SplashActivity extends Activity {
     private static int SPLASH_TIME_OUT = 1000;
@@ -18,8 +19,8 @@ public class SplashActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.splash);
+
 
 
         drawTextView();

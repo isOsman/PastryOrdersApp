@@ -32,6 +32,7 @@
     <!--    SplashActivity-->
     <string name="partner">Совместо с @SHIRIN_CAKES_</string>
     <!--    Tips-->
-    <string name="tip_lock_text">нажмите что-бы открыть совет</string>
+    <string name="tip_unlock_text">нажмите что-бы открыть совет</string>
+    <string name="tip_lock_text">скоро...</string>
 </resources>
 
