@@ -13,7 +13,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 public class SplashActivity extends Activity {
-    private static int SPLASH_TIME_OUT = 4000;
+    private static int SPLASH_TIME_OUT = 1000;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

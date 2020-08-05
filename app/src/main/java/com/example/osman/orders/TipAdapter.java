@@ -3,11 +3,13 @@ package com.example.osman.orders;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,8 +47,12 @@ public class TipAdapter extends ArrayAdapter<Tip> {
 
         if(tipList.get(position).isOpen()){
             viewHolder.textView.setText(tipList.get(position).getText());
+            Log.d(storage.TAG,"isOpen : " + position + " | text : " + tipList.get(position).getText());
         }else{
-            viewHolder.textView.setHint(viewHolder.getString(R.string.tip_lock_text));
+            viewHolder.textView.setText("");
+            viewHolder.textView.setHint(R.string.tip_lock_text);
+            viewHolder.textView.setOnClickListener(new ClickListener(position));
+            Log.d(storage.TAG,"isNOTOpen : " + position + " | text : " + tipList.get(position).getText());
         }
 
         return convertView;
@@ -71,7 +77,7 @@ public class TipAdapter extends ArrayAdapter<Tip> {
 
     //-------------------------------------------------------------------
     //class for processing each view
-   private class ViewHolder{
+   private class ViewHolder {
         TextView textView;
 
         ViewHolder(View view){
@@ -82,7 +88,25 @@ public class TipAdapter extends ArrayAdapter<Tip> {
        public String getString(int resource){
            return context.getResources().getString(resource);
        }
-   }
+
+    }
+
+
+    class ClickListener implements View.OnClickListener{
+        int pos;
+
+        ClickListener(int pos){
+            this.pos = pos;
+        }
+
+        @Override
+        public void onClick(View view) {
+            ((TextView) view.findViewById(R.id.tip_item)).setText(tipList.get(pos).getText());
+            tipList.get(pos).setOpen(true);
+            notifyDataSetChanged();
+
+        }
+    }
 
 
 

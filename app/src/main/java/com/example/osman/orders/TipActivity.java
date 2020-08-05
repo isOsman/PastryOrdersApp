@@ -15,20 +15,20 @@ public class TipActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tip);
 
-        ArrayList<Tip> tips = new ArrayList<>();
-        tips.add(new Tip("Используйте комара вместо мухи и слона",true));
-        tips.add(new Tip("Используйте комара вместо мухи и слона",false));
-        tips.add(new Tip("Используйте комара вместо мухи и слона или Используйте комара вместо мухи и слона",false));
+        Storage storage = null;
+        ArrayList<Tip> tips = null;
 
-        ListView listView = (ListView) findViewById(R.id.tip_list);
         try {
-            TipAdapter tipAdapter = new TipAdapter(this,R.layout.tip_item,tips,Storage.getInstance(this));
-            listView.setAdapter(tipAdapter);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+             storage = Storage.getInstance(this);
+             tips = storage.getTips();
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+        ListView listView = (ListView) findViewById(R.id.tip_list);
+        TipAdapter tipAdapter = new TipAdapter(this,R.layout.tip_item,tips,storage);
+        listView.setAdapter(tipAdapter);
+
 
     }
 }

@@ -91,13 +91,22 @@ public class Storage {
         if(!tipFile.exists()){
             tipFile.createNewFile();
             ArrayList<Tip> tips = new ArrayList<>();
-            tips.add(new Tip("tip1"));
-            tips.add(new Tip("tip2"));
-            tips.add(new Tip("tip3"));
+            for(Tip tip : TipData.tips){
+                tips.add(tip);
+            }
             writeTips(tips);
             Log.d(TAG,"tip created: " + tipFile.getAbsolutePath());
         }else{
             Log.d(TAG,"tip ready");
+            ArrayList<Tip> tips = getTips();
+            if(tips.size() < TipData.tips.length){
+                Log.d(TAG,"New Tips");
+               for(int i = tips.size();i<TipData.tips.length;i++){
+                   tips.add(TipData.tips[i]);
+               }
+
+               writeTips(tips);
+            }
         }
 
 
