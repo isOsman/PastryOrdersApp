@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Мои заказы</string>
+    <string name="app_name">Я кондитер</string>
     <string name="customer">"Кому:"</string>
     <string name="cake">"Торт:"</string>
     <string name="orderDate">"Дата заказа:"</string>
