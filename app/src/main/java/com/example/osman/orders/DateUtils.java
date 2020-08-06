@@ -11,10 +11,13 @@ public class DateUtils {
     public static String getDate() {
         return new SimpleDateFormat("dd.MM.yyyy").format(new Date());
     }
+    public static String getParseFormat(){return "EEE MMM dd HH:mm:ss zzz yyyy";}
+
     public static int getHoursBetween(Date date1,Date date2){
         int MILLS_TO_HOUR = 1000 * 60 * 60;
         return (int) (date1.getTime() - date2.getTime()) / MILLS_TO_HOUR;
     }
+
     public static long getDateDiff(Date date1,Date date2,TimeUnit timeUnit){
         long diffInMills = date2.getTime() - date1.getTime();
         return timeUnit.convert(diffInMills,TimeUnit.MILLISECONDS);

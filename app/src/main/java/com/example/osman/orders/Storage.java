@@ -124,11 +124,11 @@ public class Storage {
         }else{
             Log.d(TAG,"lastDateFile ready");
             Date date;
-            SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+            SimpleDateFormat format = new SimpleDateFormat(DateUtils.getParseFormat());
             try {
                 date = format.parse(getDate());
                 Log.d(TAG,"parsed date: " + date.toString());
-                Log.d(TAG,"minutes diff: " + DateUtils.getDateDiff(date,new Date(), TimeUnit.DAYS));
+                Log.d(TAG,"minutes diff: " + DateUtils.getDateDiff(date,new Date(), TimeUnit.MINUTES));
 
             }catch (Exception e){
                 Log.d(TAG,"fail to parse date");
