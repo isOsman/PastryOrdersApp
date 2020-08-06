@@ -44,8 +44,7 @@ public class TipActivity extends AppCompatActivity {
         Date date;
         date = new SimpleDateFormat(DateUtils.getParseFormat()).parse(storage.getDate());
         Log.d(storage.TAG,"checkTips | last date: " + date.toString());
-        int interval = 24;
-        long readyTip = DateUtils.getDateDiff(date,new Date(), TimeUnit.DAYS) / interval;
+        long readyTip = DateUtils.getDateDiff(date,new Date(), TimeUnit.DAYS);
         if(readyTip<1) return;
         Log.d(storage.TAG,"ready tip : " + readyTip);
         for (int i = 0;(i<tips.size()) && (readyTip>=1);i++){
