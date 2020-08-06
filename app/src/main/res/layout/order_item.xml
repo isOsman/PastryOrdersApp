@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="15dp"
+    android:padding="@dimen/basic_padding"
     android:layout_marginBottom="2dp">
 
     <TextView
@@ -25,7 +25,7 @@
         android:textSize="18sp"
         android:text="@string/customer"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:textColor="@color/colorPrimaryDark" />
     <TextView
         android:id="@+id/cakeView"
         android:layout_width="match_parent"

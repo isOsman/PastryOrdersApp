@@ -5,7 +5,7 @@
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/tip_item_draw"
+    android:background="@drawable/tip_item_close"
     android:textColor="#ffffff"
     android:hint="@string/tip_lock_text"
     android:textSize="@dimen/tip_text_size"

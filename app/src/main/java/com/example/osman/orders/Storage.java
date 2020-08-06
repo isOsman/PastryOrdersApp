@@ -11,8 +11,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Storage {
 
@@ -23,6 +26,7 @@ public class Storage {
     private String dataName = "data.ord";
     private String idName = "id.ord";
     private String tipName = "tip.ord";
+    private String lastSessionDate = "last_session_date.ord";
 
     private FileInputStream fin;
     private FileOutputStream fos;
@@ -31,6 +35,7 @@ public class Storage {
     private File dataFile;
     private File idFile;
     private File tipFile;
+    private File lastDateFile;
 
     static String TAG = "FILETAG";
 
@@ -110,6 +115,43 @@ public class Storage {
         }
 
 
+        lastDateFile = new File(root + "/" + folderName,lastSessionDate);
+        if(!lastDateFile.exists()){
+            lastDateFile.createNewFile();
+            writeDate(new Date().toString());
+            Log.d(TAG,"lastDateFile created: " + lastDateFile.getAbsolutePath());
+            Log.d(TAG,"now date:  " + new Date().toString());
+        }else{
+            Log.d(TAG,"lastDateFile ready");
+            Date date;
+            SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+            try {
+                date = format.parse(getDate());
+                Log.d(TAG,"parsed date: " + date.toString());
+                Log.d(TAG,"minutes diff: " + DateUtils.getDateDiff(date,new Date(), TimeUnit.DAYS));
+
+            }catch (Exception e){
+                Log.d(TAG,"fail to parse date");
+            }
+
+        }
+
+
+    }
+
+    public void writeDate(String date) throws IOException {
+        Log.d(TAG,"writeID()");
+        FileWriter fileWriter = new FileWriter(lastDateFile);
+        fileWriter.write(date);
+        fileWriter.close();
+    }
+
+    public String getDate() throws FileNotFoundException {
+        Log.d(TAG,"getDate()");
+        Scanner scan = new Scanner(lastDateFile);
+        String date = scan.nextLine();
+        scan.close();
+        return date;
     }
 
     public void writeTips(ArrayList<Tip> tips) throws IOException{
@@ -198,6 +240,8 @@ public class Storage {
         Log.d(TAG,"getList() END");
         return list;
     }
+
+
 
 
 //    //print to debug console all records from list(file)

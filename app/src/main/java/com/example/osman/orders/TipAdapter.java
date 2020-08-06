@@ -46,14 +46,17 @@ public class TipAdapter extends ArrayAdapter<Tip> {
 
         if(tipList.get(position).isOpen()){
             viewHolder.textView.setText(tipList.get(position).getText());
+            viewHolder.textView.setBackgroundResource(R.drawable.tip_item_open);
             Log.d(storage.TAG,"isOpen : " + position + " | text : " + tipList.get(position).getText());
         }else if(!tipList.get(position).isOpen() && tipList.get(position).isCanOpen()){
             viewHolder.textView.setText("");
             viewHolder.textView.setHint(R.string.tip_unlock_text);
+            viewHolder.textView.setBackgroundResource(R.drawable.tip_item_can_open);
             viewHolder.textView.setOnClickListener(new ClickListener(position));
             Log.d(storage.TAG,"isNOTOpen : " + position + " | text : " + tipList.get(position).getText());
         }else{
             viewHolder.textView.setText("");
+            viewHolder.textView.setBackgroundResource(R.drawable.tip_item_close);
             viewHolder.textView.setHint(R.string.tip_lock_text);
         }
 
