@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/tip_item_close"
-    android:textColor="#ffffff"
+    android:textColor="#FA0F88"
     android:hint="@string/tip_lock_text"
     android:textSize="@dimen/tip_text_size"
     android:padding="@dimen/basic_padding"

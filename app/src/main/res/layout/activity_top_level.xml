@@ -26,7 +26,7 @@
         android:onClick="btnClick"
         android:text="@string/ordersItem"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#ffffff"
+        android:textColor="#FA0F88"
         android:textSize="@dimen/basic_text_size" />
 
     <Button
@@ -40,7 +40,7 @@
         android:text="@string/recipesItem"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="@dimen/basic_text_size"
-        android:textColor="#ffffff"/>
+        android:textColor="#FA0F88"/>
 
     <Button
         android:id="@+id/tipsBtn"
@@ -52,7 +52,7 @@
         android:background="@drawable/btn_background"
         android:text="@string/tipsItem"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#ffffff"
+        android:textColor="#FA0F88"
         android:textSize="@dimen/basic_text_size"
         android:onClick="btnClick"
         />
