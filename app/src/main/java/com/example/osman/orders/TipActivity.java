@@ -1,14 +1,13 @@
 package com.example.osman.orders;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import java.io.FileNotFoundException;
+import androidx.appcompat.app.AppCompatActivity;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -41,12 +40,15 @@ public class TipActivity extends AppCompatActivity {
     }
 
     private void checkTips(Storage storage,ArrayList<Tip> tips) throws IOException, ParseException {
-        Date date;
-        date = new SimpleDateFormat(DateUtils.getParseFormat()).parse(storage.getDate());
+        Date date =  new Date(Long.parseLong(storage.getDate()));
         Log.d(storage.TAG,"checkTips | last date: " + date.toString());
-        long readyTip = DateUtils.getDateDiff(date,new Date(), TimeUnit.DAYS);
+        long readyTip = DateUtils.getDateDiff(date,new Date(), TimeUnit.HOURS);
+        Toast.makeText(this,"READY TIP: " + readyTip,Toast.LENGTH_SHORT).show();
+        Log.d(Storage.TAG,"ready tip : " + readyTip);
+        Toast.makeText(this,"READY TIP: " + readyTip,Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(this,"PARSED DATE: " + date.toString(),Toast.LENGTH_SHORT).show();
         if(readyTip<1) return;
-        Log.d(storage.TAG,"ready tip : " + readyTip);
         for (int i = 0;(i<tips.size()) && (readyTip>=1);i++){
             if(!tips.get(i).isOpen() && (!tips.get(i).isCanOpen())){
                 tips.get(i).setCanOpen(true);
@@ -54,7 +56,7 @@ public class TipActivity extends AppCompatActivity {
             }
         }
 
-        storage.writeDate(new Date().toString());
+        storage.writeDate(new Date().getTime()+"");
         storage.writeTips(tips);
     }
 }

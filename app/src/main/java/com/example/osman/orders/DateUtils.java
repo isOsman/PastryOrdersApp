@@ -3,6 +3,7 @@ package com.example.osman.orders;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -22,5 +23,7 @@ public class DateUtils {
         long diffInMills = date2.getTime() - date1.getTime();
         return timeUnit.convert(diffInMills,TimeUnit.MILLISECONDS);
     }
+
+
 
 }

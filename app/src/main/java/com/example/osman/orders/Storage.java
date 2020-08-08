@@ -11,12 +11,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+//this class save and return data of files
 public class Storage {
 
     //use singleton pattern
@@ -47,6 +47,7 @@ public class Storage {
         init();
     }
 
+    //singleton constructor
     public static Storage getInstance(Context context) throws IOException, ClassNotFoundException {
         if(instance == null){
             instance = new Storage(context);
@@ -58,8 +59,9 @@ public class Storage {
 
 
 
-    //initialize dir and files
+    //initialize dir and all files
     public void init() throws IOException, ClassNotFoundException{
+        //get path to device storage
         File root = context.getExternalFilesDir(null);
 
         //if not exists,create new file
@@ -97,13 +99,14 @@ public class Storage {
             tipFile.createNewFile();
             ArrayList<Tip> tips = new ArrayList<>();
             for(Tip tip : TipData.tips){
-                tips.add(tip);
+                tips.add(tip);//refresh tiplist
             }
             writeTips(tips);
             Log.d(TAG,"tip created: " + tipFile.getAbsolutePath());
         }else{
             Log.d(TAG,"tip ready");
             ArrayList<Tip> tips = getTips();
+            //if have new tips add to tiplist
             if(tips.size() < TipData.tips.length){
                 Log.d(TAG,"New Tips");
                for(int i = tips.size();i<TipData.tips.length;i++){
@@ -118,18 +121,24 @@ public class Storage {
         lastDateFile = new File(root + "/" + folderName,lastSessionDate);
         if(!lastDateFile.exists()){
             lastDateFile.createNewFile();
-            writeDate(new Date().toString());
+            Date date = new Date();
+            String strDate = date.getTime()+"";
+            try {
+                Log.d(TAG, "writeDate: " + strDate);
+                writeDate(strDate);
+            }catch (Exception e){
+                Log.d(TAG,"Fail to write date");
+            }
+
             Log.d(TAG,"lastDateFile created: " + lastDateFile.getAbsolutePath());
-            Log.d(TAG,"now date:  " + new Date().toString());
+            Log.d(TAG,"now date:  " + strDate);
         }else{
             Log.d(TAG,"lastDateFile ready");
             Date date;
-            SimpleDateFormat format = new SimpleDateFormat(DateUtils.getParseFormat());
             try {
-                date = format.parse(getDate());
+                date = new Date(Long.parseLong(getDate()));
                 Log.d(TAG,"parsed date: " + date.toString());
                 Log.d(TAG,"minutes diff: " + DateUtils.getDateDiff(date,new Date(), TimeUnit.MINUTES));
-
             }catch (Exception e){
                 Log.d(TAG,"fail to parse date");
             }

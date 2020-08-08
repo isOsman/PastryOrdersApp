@@ -24,9 +24,7 @@ public class TopLevelActivity extends AppCompatActivity {
 
         try {
             Storage.getInstance(this);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
