@@ -40,7 +40,8 @@
         android:text="@string/recipesItem"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="@dimen/basic_text_size"
-        android:textColor="#FA0F88"/>
+        android:textColor="#FA0F88"
+        android:onClick="btnClick"/>
 
     <Button
         android:id="@+id/tipsBtn"

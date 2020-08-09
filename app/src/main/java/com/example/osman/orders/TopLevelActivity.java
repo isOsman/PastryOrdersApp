@@ -47,6 +47,8 @@ public class TopLevelActivity extends AppCompatActivity {
             startActivity(new Intent(this,MainActivity.class));
         }else if(view.getId() == R.id.tipsBtn){
             startActivity(new Intent(this,TipActivity.class));
+        }else if(view.getId() == R.id.recipesBtn){
+            startActivity(new Intent(this,RecipeActivity.class));
         }
     }
 }

@@ -14,7 +14,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TipActivity"></activity>
+        <activity android:name=".RecipeActivity" />
+        <activity android:name=".TipActivity" />
         <activity android:name=".TopLevelActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
@@ -29,7 +30,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-9090524505223693~6732044329"/>
+            android:value="ca-app-pub-9090524505223693~6732044329" />
     </application>
 
 </manifest>

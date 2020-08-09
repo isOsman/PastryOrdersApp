@@ -1,0 +1,156 @@
+package com.example.osman.orders.recipes;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+
+public class Recipe implements Serializable {
+
+    public static final String RTAG = "RTAG";
+
+    public static int DIFF_EASY = 1;
+    public static int DIFF_MEDIUM = 2;
+    public static int DIFF_HARD = 3;
+
+
+    private String title;
+    private int[] cookedImgs;//contains img id's
+    private int difficult; //difficult:easy,medium,hard
+    private int cookingTimeMins;//cooking time in minutes
+    private String[] ingredients;
+    private String description;
+    private ArrayList<Step> steps;
+
+
+    public Recipe(){}
+
+    public Recipe(String title,int[] cookedImgs,int difficult,String[] ingredients,String description,ArrayList<Step> steps){
+        this.title = title;
+        this.cookedImgs = cookedImgs;
+        this.difficult = difficult;
+        this.ingredients = ingredients;
+        this.description = description;
+        this.steps = steps;
+    }
+
+
+    //pseudo - builder
+    public Recipe build(){
+        return new Recipe(this.title,this.cookedImgs,this.difficult,this.ingredients,this.description,this.steps);
+    }
+
+    // get - set
+    public String getTitle(){return title;}
+
+    public void setTitle(String title){
+        this.title = title;
+    }
+
+    public int[] getCookedImgs() {
+        return cookedImgs;
+    }
+
+    public void setCookedImgs(int[] cookedImgs) {
+        this.cookedImgs = cookedImgs;
+    }
+
+    public int getDifficult() {
+        return difficult;
+    }
+
+    public void setDifficult(int difficult) {
+        this.difficult = difficult;
+    }
+
+    public int getCookingTimeMins() {
+        return cookingTimeMins;
+    }
+
+    public void setCookingTimeMins(int cookingTimeMins) {
+        this.cookingTimeMins = cookingTimeMins;
+    }
+
+    public String[] getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String[] ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setSteps(ArrayList<Step> steps){
+        this.steps = steps;
+    }
+
+    public ArrayList<Step> getSteps(){
+        return steps;
+    }
+
+    //inner class for processing recipe steps;
+    public static class Step implements Serializable{
+        int imgId;
+        String instruction;
+
+        // get - set
+        public int getImgId() {
+            return imgId;
+        }
+
+        public void setImgId(int imgId) {
+            this.imgId = imgId;
+        }
+
+        public String getInstruction() {
+            return instruction;
+        }
+
+        public void setInstruction(String instruction) {
+            this.instruction = instruction;
+        }
+
+        public Step(int imgId){
+            this.imgId = imgId;
+            this.instruction = null;
+        }
+
+        public Step(String instruction){
+            this.instruction = instruction;
+            this.imgId = -1;
+        }
+
+        public Step(int imgId,String instruction){
+            this.imgId = imgId;
+            this.instruction = instruction;
+        }
+
+        @Override
+        public String toString() {
+            return "Step{" +
+                    "imgId=" + imgId +
+                    ", instruction='" + instruction + '\'' +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "title=" + title +
+                ", cookedImgs=" + Arrays.toString(cookedImgs) +
+                ", difficult=" + difficult +
+                ", cookingTimeMins=" + cookingTimeMins +
+                ", ingredients=" + Arrays.toString(ingredients) +
+                ", description='" + description + '\'' +
+                ", steps=" + steps +
+                '}';
+    }
+}
