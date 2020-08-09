@@ -3,6 +3,9 @@ package com.example.osman.orders;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.osman.orders.recipes.Recipe;
+import com.example.osman.orders.recipes.RecipeData;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,6 +30,7 @@ public class Storage {
     private String idName = "id.ord";
     private String tipName = "tip.ord";
     private String lastSessionDate = "last_session_date.ord";
+    private String recipes = "recipes.ord";
 
     private FileInputStream fin;
     private FileOutputStream fos;
@@ -36,6 +40,7 @@ public class Storage {
     private File idFile;
     private File tipFile;
     private File lastDateFile;
+    private File recipesFile;
 
     static String TAG = "FILETAG";
 
@@ -145,6 +150,32 @@ public class Storage {
 
         }
 
+        recipesFile = new File(root + "/" + folderName,recipes);
+        RecipeData recipeData = new RecipeData();
+        if(!recipesFile.exists()){
+            recipesFile.createNewFile();
+            ArrayList<Recipe> recipes = new ArrayList<>();
+            for(Recipe r : recipeData.recipes){
+                recipes.add(r);//refresh list
+            }
+            writeRecipes(recipes);
+            Log.d(TAG,"recipes created: " + recipesFile.getAbsolutePath());
+        }else{
+            Log.d(TAG,"recipes ready");
+            ArrayList<Recipe> recipes = getRecipes();
+            if(recipes.size() < recipeData.recipes.length){
+                Log.d(Recipe.RTAG,"New recipes");
+                for(int i = recipes.size();i<recipeData.recipes.length;i++){
+                    recipes.add(recipeData.recipes[i]);
+                }
+                writeRecipes(recipes);
+            }
+            for(Recipe r : recipes) {
+                Log.d(Recipe.RTAG, r.toString());
+            }
+
+        }
+
 
     }
 
@@ -189,6 +220,34 @@ public class Storage {
         ois.close();
         fis.close();
         Log.d(TAG,"getTips() END");
+        return list;
+    }
+
+    public void writeRecipes(ArrayList<Recipe> recipes) throws IOException{
+        Log.d(TAG,"writeRecipes()");
+        FileOutputStream fos = new FileOutputStream(recipesFile);
+        ObjectOutputStream ois = new ObjectOutputStream(fos);
+        ois.writeObject(recipes);
+        ois.close();
+        fos.close();
+        Log.d(TAG,"writeRecipes() END");
+    }
+
+    @SuppressWarnings("unchecked")
+    public ArrayList<Recipe> getRecipes() throws IOException, ClassNotFoundException {
+        Log.d(TAG,"getRecipes()");
+        //if file is emty then return null
+        if(recipesFile.length() == 0) return null;
+
+        //else...
+        ArrayList<Recipe> list = null;
+        FileInputStream fis = new FileInputStream(recipesFile);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        list = (ArrayList<Recipe>) ois.readObject();
+
+        ois.close();
+        fis.close();
+        Log.d(TAG,"getRecipes() END");
         return list;
     }
 
