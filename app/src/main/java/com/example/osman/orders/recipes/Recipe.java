@@ -21,23 +21,26 @@ public class Recipe implements Serializable {
     private String[] ingredients;
     private String description;
     private ArrayList<Step> steps;
+    private boolean open;
 
 
     public Recipe(){}
 
-    public Recipe(String title,int[] cookedImgs,int difficult,String[] ingredients,String description,ArrayList<Step> steps){
+    public Recipe(String title,int[] cookedImgs,int difficult,int cookingTimeMins,String[] ingredients,String description,ArrayList<Step> steps,boolean open){
         this.title = title;
         this.cookedImgs = cookedImgs;
         this.difficult = difficult;
+        this.cookingTimeMins = cookingTimeMins;
         this.ingredients = ingredients;
         this.description = description;
         this.steps = steps;
+        this.open = open;
     }
 
 
     //pseudo - builder
     public Recipe build(){
-        return new Recipe(this.title,this.cookedImgs,this.difficult,this.ingredients,this.description,this.steps);
+        return new Recipe(this.title,this.cookedImgs,this.difficult,this.cookingTimeMins,this.ingredients,this.description,this.steps,this.open);
     }
 
     // get - set
@@ -93,6 +96,12 @@ public class Recipe implements Serializable {
 
     public ArrayList<Step> getSteps(){
         return steps;
+    }
+
+    public boolean isOpen(){return open;}
+
+    public void setOpen(boolean open){
+        this.open = open;
     }
 
     //inner class for processing recipe steps;
@@ -151,6 +160,7 @@ public class Recipe implements Serializable {
                 ", ingredients=" + Arrays.toString(ingredients) +
                 ", description='" + description + '\'' +
                 ", steps=" + steps +
+                ", open=" + open +
                 '}';
     }
 }

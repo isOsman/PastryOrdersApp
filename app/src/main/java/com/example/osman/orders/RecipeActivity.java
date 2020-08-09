@@ -24,12 +24,13 @@ public class RecipeActivity extends AppCompatActivity {
         recipe.setIngredients(new String[]{"egg - 4шт","oil - 50мг"});
         recipe.setDescription("best cake");
 
-
         ArrayList<Recipe.Step> stepList = new ArrayList<>();
         stepList.add(new Recipe.Step(1,"get egg"));
         stepList.add(new Recipe.Step(2,"get sugar"));
         stepList.add(new Recipe.Step(3,"ready"));
         recipe.setSteps(stepList);
+
+        recipe.setOpen(true);
 
 
         recipe.setTitle("napoleon");
@@ -37,6 +38,7 @@ public class RecipeActivity extends AppCompatActivity {
         Log.d(Recipe.RTAG,napoleon.toString());
 
         recipe.setTitle("zebra");
+        recipe.setOpen(false);
         Recipe zebra = recipe.build();
         Log.d(Recipe.RTAG,zebra.toString());
 
