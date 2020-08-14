@@ -80,7 +80,8 @@
                 android:layout_height="@dimen/card_time_img_size"
                 android:layout_marginEnd="@dimen/card_diff_margin"
                 android:layout_toStartOf="@id/time_text"
-                android:layout_centerVertical="true" />
+                android:layout_centerVertical="true"
+                android:background="@drawable/clock"/>
 
         </RelativeLayout>
 
