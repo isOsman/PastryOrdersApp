@@ -6,4 +6,6 @@
     <color name="colorPink">#fa0f88</color>
     <color name="item_lock">#000000</color>
     <color name="item_open">#ffffff</color>
+    <color name="card_diff_text">#777E7D</color>
+
 </resources>

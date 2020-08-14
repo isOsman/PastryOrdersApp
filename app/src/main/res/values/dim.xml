@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_diff_text_size">20sp</dimen>
+    <dimen name="card_diff_margin">5dp</dimen>
+    <dimen name="card_time_img_size">23dp</dimen>
+</resources>

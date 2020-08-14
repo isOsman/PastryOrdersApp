@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/cake_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"/>
+
+        <TextView
+            android:id="@+id/cake_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:fontFamily="sans-serif-light"
+            android:layout_marginBottom="@dimen/card_diff_margin"
+            android:layout_below="@id/cake_img" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_below="@id/cake_title"/>
+
+        <RelativeLayout
+            android:id="@+id/detail_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@id/divider">
+
+            <ImageView
+                android:id="@+id/diff_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/card_diff_margin"/>
+
+            <TextView
+                android:id="@+id/diff_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/card_diff_text"
+                android:textSize="@dimen/card_diff_text_size"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:layout_toEndOf="@id/diff_img"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/card_diff_margin" />
+
+            <TextView
+                android:id="@+id/time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/card_diff_text"
+                android:textSize="@dimen/card_diff_text_size"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/card_diff_margin" />
+
+            <TextView
+                android:id="@+id/time_img"
+                android:layout_width="@dimen/card_time_img_size"
+                android:layout_height="@dimen/card_time_img_size"
+                android:layout_marginEnd="@dimen/card_diff_margin"
+                android:layout_toStartOf="@id/time_text"
+                android:layout_centerVertical="true" />
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginBottom="@dimen/card_diff_margin"
+            android:layout_below="@id/detail_layout" />
+
+        <TextView
+            android:id="@+id/cake_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="@dimen/card_diff_text_size"
+            android:textStyle="italic"
+            android:fontFamily="sans-serif-light"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
