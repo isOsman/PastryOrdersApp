@@ -15,7 +15,7 @@ public class Recipe implements Serializable {
 
 
     private String title;
-    private int[] cookedImgs;//contains img id's
+    private int imgId;
     private int difficult; //difficult:easy,medium,hard
     private int cookingTimeMins;//cooking time in minutes
     private String[] ingredients;
@@ -26,9 +26,9 @@ public class Recipe implements Serializable {
 
     public Recipe(){}
 
-    public Recipe(String title,int[] cookedImgs,int difficult,int cookingTimeMins,String[] ingredients,String description,ArrayList<Step> steps,boolean open){
+    public Recipe(String title,int imgId,int difficult,int cookingTimeMins,String[] ingredients,String description,ArrayList<Step> steps,boolean open){
         this.title = title;
-        this.cookedImgs = cookedImgs;
+        this.imgId = imgId;
         this.difficult = difficult;
         this.cookingTimeMins = cookingTimeMins;
         this.ingredients = ingredients;
@@ -40,7 +40,7 @@ public class Recipe implements Serializable {
 
     //pseudo - builder
     public Recipe build(){
-        return new Recipe(this.title,this.cookedImgs,this.difficult,this.cookingTimeMins,this.ingredients,this.description,this.steps,this.open);
+        return new Recipe(this.title,this.imgId,this.difficult,this.cookingTimeMins,this.ingredients,this.description,this.steps,this.open);
     }
 
     // get - set
@@ -50,12 +50,12 @@ public class Recipe implements Serializable {
         this.title = title;
     }
 
-    public int[] getCookedImgs() {
-        return cookedImgs;
+    public int getImgId() {
+        return imgId;
     }
 
-    public void setCookedImgs(int[] cookedImgs) {
-        this.cookedImgs = cookedImgs;
+    public void setImgId(int imgId) {
+        this.imgId = imgId;
     }
 
     public int getDifficult() {
@@ -154,7 +154,7 @@ public class Recipe implements Serializable {
     public String toString() {
         return "Recipe{" +
                 "title=" + title +
-                ", cookedImgs=" + Arrays.toString(cookedImgs) +
+                ", imgId=" + imgId +
                 ", difficult=" + difficult +
                 ", cookingTimeMins=" + cookingTimeMins +
                 ", ingredients=" + Arrays.toString(ingredients) +

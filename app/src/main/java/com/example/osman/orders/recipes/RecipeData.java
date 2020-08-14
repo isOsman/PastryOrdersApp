@@ -14,7 +14,7 @@ public class RecipeData {
     public RecipeData(){
         Recipe recipe = new Recipe();
         recipe.setTitle("napoleon");
-        recipe.setCookedImgs(new int[]{R.drawable.logo,2,3});
+        recipe.setImgId(-1);
         recipe.setDifficult(Recipe.DIFF_EASY);
         recipe.setCookingTimeMins(60);
         recipe.setIngredients(new String[]{"яйца - 4шт","масло сливочное - 50мг"});

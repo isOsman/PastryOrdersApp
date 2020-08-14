@@ -34,5 +34,10 @@
     <!--    Tips-->
     <string name="tip_unlock_text">нажмите что-бы открыть совет</string>
     <string name="tip_lock_text">скоро...</string>
+
+<!--    Recipe-->
+    <string name="diff_easy">Легко</string>
+    <string name="diff_meduim">Средне</string>
+    <string name="diff_hard">Тяжело</string>
 </resources>
 

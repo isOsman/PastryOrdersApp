@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card"
     app:cardCornerRadius="5dp"
@@ -81,7 +81,8 @@
                 android:layout_marginEnd="@dimen/card_diff_margin"
                 android:layout_toStartOf="@id/time_text"
                 android:layout_centerVertical="true"
-                android:background="@drawable/clock"/>
+                android:background="@drawable/clock"
+                />
 
         </RelativeLayout>
 
@@ -95,6 +96,7 @@
 
         <TextView
             android:id="@+id/cake_desc"
+            android:layout_below="@id/divider2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
