@@ -35,6 +35,7 @@ public class RecipeActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
         RecipeCardAdapter recipeCardAdapter = new RecipeCardAdapter(this,recipeArrayList);
         recyclerView.setAdapter(recipeCardAdapter);
 

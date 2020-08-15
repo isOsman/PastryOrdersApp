@@ -1,6 +1,7 @@
 package com.example.osman.orders.recipes;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.osman.orders.R;
+import com.example.osman.orders.RecipeDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -23,16 +25,18 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
+        public View view;
         public TextView cakeTitle;
         public ImageView cakeImg;
         public ImageView diffImg;
         public TextView diffText;
         public TextView timeText;
-        public ImageView timeImg;
+//        public ImageView timeImg;
         public TextView cakeDesc;
 
         public ViewHolder(View card){
             super(card);
+            this.view = card;
             cakeTitle = (TextView) card.findViewById(R.id.cake_title);
             cakeImg = (ImageView) card.findViewById(R.id.cake_img);
             diffImg = (ImageView) card.findViewById(R.id.diff_img);
@@ -47,6 +51,7 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
     public RecipeCardAdapter(Context context,ArrayList<Recipe> data){
         this.context = context;
         this.dataset = data;
+
     }
 
     @NonNull
@@ -56,8 +61,6 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
                             .from(parent.getContext())
                             .inflate(R.layout.card_item,parent,false);
 
-        view.setOnClickListener(new CardClickListener());
-
         return new ViewHolder(view);
     }
 
@@ -65,6 +68,8 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         int diff_img = -1;
         int diff_text_id = -1;
+
+        holder.view.setOnClickListener(new CardClickListener(position));
 
         holder.cakeTitle.setText(dataset.get(position).getTitle());
 
@@ -111,9 +116,18 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
 
 
     class CardClickListener implements View.OnClickListener{
+        int itemPos;
+
+        public CardClickListener(int itemPos){
+            this.itemPos = itemPos;
+        }
+
         @Override
         public void onClick(View view) {
             Toast.makeText(view.getContext(),"Click",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context,RecipeDetailActivity.class);
+            intent.putExtra(RecipeDetailActivity.RECIPE_EXTRA,dataset.get(itemPos));
+            context.startActivity(intent);
         }
     }
 }

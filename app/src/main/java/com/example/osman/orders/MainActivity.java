@@ -1,27 +1,27 @@
 package com.example.osman.orders;
 
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
-public class MainActivity extends Activity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     Storage storage;
     OrderAdapter adapter;
@@ -55,6 +55,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         ListView ordersList;
         topView = (TextView) findViewById(R.id.topView);
+
         try {
 //            Toast.makeText(this,"Storage: " + (storage == null),Toast.LENGTH_SHORT).show();
             orders = storage.getList();
@@ -76,6 +77,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         addButton = (Button) findViewById(R.id.addBtn);
         addButton.setOnClickListener(this);
+
 
 
 
