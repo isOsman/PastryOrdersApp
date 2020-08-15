@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -55,6 +56,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         ListView ordersList;
         topView = (TextView) findViewById(R.id.topView);
         try {
+//            Toast.makeText(this,"Storage: " + (storage == null),Toast.LENGTH_SHORT).show();
             orders = storage.getList();
             if(orders == null)orders = new ArrayList<>();
 

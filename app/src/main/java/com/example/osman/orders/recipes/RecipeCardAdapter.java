@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -54,6 +55,8 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
         View view = (CardView) LayoutInflater
                             .from(parent.getContext())
                             .inflate(R.layout.card_item,parent,false);
+
+        view.setOnClickListener(new CardClickListener());
 
         return new ViewHolder(view);
     }
@@ -104,5 +107,13 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
     @Override
     public int getItemCount() {
         return dataset.size();
+    }
+
+
+    class CardClickListener implements View.OnClickListener{
+        @Override
+        public void onClick(View view) {
+            Toast.makeText(view.getContext(),"Click",Toast.LENGTH_SHORT).show();
+        }
     }
 }

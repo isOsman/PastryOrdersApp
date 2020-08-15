@@ -26,15 +26,21 @@ public class RecipeData {
         stepList.add(new Recipe.Step(3,"готово - вы кондитер"));
         recipe.setSteps(stepList);
 
+        recipe.setDifficult(Recipe.DIFF_HARD);
+        recipe.setImgId(R.drawable.lion);
         Recipe napoleon = recipe.build();
 
+        recipe.setDifficult(Recipe.DIFF_MEDIUM);
+        recipe.setImgId(R.drawable.idol);
         recipe.setTitle("Зебра");
         Recipe zebra = recipe.build();
 
+        recipe.setDifficult(Recipe.DIFF_EASY);
         recipe.setTitle("Маффины от мафиози");
         recipe.setOpen(true);
         Recipe maffin = recipe.build();
 
+        recipe.setImgId(R.drawable.logo);
         recipe.setTitle("Эклеры по американски");
         recipe.setOpen(true);
         Recipe ecclere = recipe.build();

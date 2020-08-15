@@ -99,6 +99,7 @@
             android:layout_below="@id/divider2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/card_diff_margin"
             android:gravity="center"
             android:textAlignment="center"
             android:textSize="@dimen/card_diff_text_size"
