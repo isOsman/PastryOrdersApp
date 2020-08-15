@@ -14,7 +14,12 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RecipeDetailActivity"></activity>
+        <activity android:name=".RecipeDetailActivity"
+            android:parentActivityName=".RecipeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RecipeActivity"/>
+        </activity>
         <activity android:name=".RecipeActivity" />
         <activity android:name=".TipActivity" />
         <activity android:name=".TopLevelActivity" />
@@ -32,6 +37,8 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-9090524505223693~6732044329" />
+
+
     </application>
 
 </manifest>

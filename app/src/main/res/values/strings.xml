@@ -39,5 +39,6 @@
     <string name="diff_easy">Легко</string>
     <string name="diff_meduim">Средне</string>
     <string name="diff_hard">Тяжело</string>
+    <string name="step_title">Шаг </string>
 </resources>
 

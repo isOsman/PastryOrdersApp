@@ -21,9 +21,9 @@ public class RecipeData {
         recipe.setDescription("вкусно и дорого");
 
         ArrayList<Recipe.Step> stepList = new ArrayList<>();
-        stepList.add(new Recipe.Step(1,"взять два яйца"));
-        stepList.add(new Recipe.Step(2,"отдать два яйца"));
-        stepList.add(new Recipe.Step(3,"готово - вы кондитер"));
+        stepList.add(new Recipe.Step(R.drawable.lion,"взять два яйца"));
+        stepList.add(new Recipe.Step(R.drawable.idol,"отдать два яйца"));
+        stepList.add(new Recipe.Step(R.drawable.logo,"готово - вы кондитер"));
         recipe.setSteps(stepList);
 
         recipe.setDifficult(Recipe.DIFF_HARD);

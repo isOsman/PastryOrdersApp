@@ -124,7 +124,6 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(view.getContext(),"Click",Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(context,RecipeDetailActivity.class);
             intent.putExtra(RecipeDetailActivity.RECIPE_EXTRA,dataset.get(itemPos));
             context.startActivity(intent);
