@@ -1,29 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/step_text"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:padding="@dimen/card_diff_margin"
-        android:gravity="start"
-        android:textAlignment="textStart"
-        android:textSize="@dimen/card_diff_text_size"
-        android:fontFamily="sans-serif-light"
-        android:textAppearance="@android:style/TextAppearance.Large" />
+        android:orientation="vertical"
+        android:padding="@dimen/card_diff_margin">
 
-    <ImageView
-        android:id="@+id/step_img"
-        android:layout_below="@id/step_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/step_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:padding="@dimen/card_diff_margin"
+            android:gravity="start"
+            android:textAlignment="textStart"
+            android:textSize="@dimen/card_diff_text_size"
+            android:fontFamily="sans-serif-light"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:layout_marginBottom="75dp"/>
+
+
+
+        <ImageView
+            android:id="@+id/step_img"
+            android:layout_below="@id/step_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true" />
+
+
+    </RelativeLayout>
+</ScrollView>

@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -36,10 +37,14 @@ public class RecipeDetailActivity extends AppCompatActivity {
 //        Log.d(TAG, recipe.toString());
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(recipe.getTitle());
+        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+
+
 
         viewPager = (ViewPager) findViewById(R.id.pager);
 

@@ -23,6 +23,16 @@ public class RecipeData {
         ArrayList<Recipe.Step> stepList = new ArrayList<>();
         stepList.add(new Recipe.Step(R.drawable.lion,"взять два яйца"));
         stepList.add(new Recipe.Step(R.drawable.idol,"отдать два яйца"));
+        stepList.add(new Recipe.Step(R.drawable.logo,"дфывоадфоывдалофыдвл" +
+                "ыдвлаофдлыва" +
+                "фыжваодлыфовадл" +
+                "фыоаожфывафыдвлоажфдываофдлывоажд" +
+                "офждывало фжвдлыоа" +
+                " фываожфдывао"));
+        stepList.add(new Recipe.Step(R.drawable.lion,"взять два яйца"));
+        stepList.add(new Recipe.Step(R.drawable.idol,"отдать два яйца жыдвлао ывлаодл ывдлаодлыво ывлдоадлывоа ывало" +
+                "ывдлаоыдлвао" +
+                "ывадлыовао ывдлоаыдвлоа"));
         stepList.add(new Recipe.Step(R.drawable.logo,"готово - вы кондитер"));
         recipe.setSteps(stepList);
 
