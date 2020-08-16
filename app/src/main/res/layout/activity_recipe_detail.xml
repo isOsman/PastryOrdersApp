@@ -6,12 +6,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".RecipeDetailActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <include
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/step_background"
-        android:theme="@style/AppTheme"/>
+        android:layout_height="wrap_content"
+        layout="@layout/app_toolbar"/>
 
     <androidx.viewpager.widget.ViewPager
         android:layout_below="@id/toolbar"
