@@ -14,15 +14,16 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".RecipeDetailActivity"
             android:parentActivityName=".RecipeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".RecipeActivity"/>
         </activity>
-        <activity android:name=".RecipeActivity" />
-        <activity android:name=".TipActivity" />
+
         <activity android:name=".TopLevelActivity" />
+
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,9 +31,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".OrderEdit" />
         <activity android:name=".OrderAdd" />
-        <activity android:name=".MainActivity" />
+
+        <activity android:name=".MainActivity"
+            android:parentActivityName=".TopLevelActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".TopLevelActivity"/>
+        </activity>
+
+        <activity android:name=".RecipeActivity">
+            android:parentActivityName=".TopLevelActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".TopLevelActivity"/>
+        </activity>
+
+        <activity android:name=".TipActivity">
+            android:parentActivityName=".TopLevelActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".TopLevelActivity"/>
+        </activity>
+
+
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

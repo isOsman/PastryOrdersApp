@@ -37,7 +37,6 @@ public class RecipeDetailActivity extends AppCompatActivity {
 //        Log.d(TAG, recipe.toString());
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(recipe.getTitle());
-        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();
