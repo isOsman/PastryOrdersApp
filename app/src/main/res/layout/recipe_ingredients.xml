@@ -6,13 +6,11 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
         android:padding="@dimen/card_diff_margin">
 
-
         <TextView
-            android:id="@+id/step_text"
+            android:id="@+id/ingredients_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -23,18 +21,23 @@
             android:textSize="@dimen/card_diff_text_size"
             android:fontFamily="sans-serif-light"
             android:textAppearance="@android:style/TextAppearance.Large"
-            android:layout_marginBottom="35dp"/>
+            android:layout_marginBottom="@dimen/basic_margin"
+            android:textStyle="bold"
+            android:text="@string/recipe_ingredients"/>
 
-
-
-        <ImageView
-            android:id="@+id/step_img"
-            android:layout_below="@id/step_text"
+        <TextView
+            android:layout_below="@id/ingredients_title"
+            android:id="@+id/ingredients_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true" />
-
+            android:padding="@dimen/card_diff_margin"
+            android:gravity="start"
+            android:textAlignment="textStart"
+            android:textSize="@dimen/card_diff_text_size"
+            android:fontFamily="sans-serif-light"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:layout_marginBottom="@dimen/basic_margin" />
 
     </RelativeLayout>
+
 </ScrollView>

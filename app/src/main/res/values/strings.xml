@@ -40,5 +40,6 @@
     <string name="diff_meduim">Средне</string>
     <string name="diff_hard">Тяжело</string>
     <string name="step_title">Шаг </string>
+    <string name="recipe_ingredients">Ингредиенты</string>
 </resources>
 

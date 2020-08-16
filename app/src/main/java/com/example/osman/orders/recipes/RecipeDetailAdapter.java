@@ -24,17 +24,19 @@ public class RecipeDetailAdapter extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return RecipeFragment.newInstance(recipe.getSteps().get(position));
+        if (position == 0 ) return RecipeIngredientsFragment.newInstance(recipe.getIngredients());
+        return RecipeFragment.newInstance(recipe.getSteps().get(position-1));
     }
 
     @Override
     public int getCount() {
-        return recipe.getSteps().size();
+        return (recipe.getSteps().size()+1);
     }
 
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
+//        if(position == 0) return context.getString(R.string.recipe_ingredients);
         return  (context.getString(R.string.step_title) + " " + (position+1));
 
     }
