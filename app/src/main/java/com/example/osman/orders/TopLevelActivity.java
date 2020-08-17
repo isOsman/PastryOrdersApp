@@ -29,12 +29,12 @@ public class TopLevelActivity extends AppCompatActivity {
         }
 
 //        BANNER ADD
-//        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-//            @Override
-//            public void onInitializationComplete(InitializationStatus initializationStatus) {
-//
-//            }
-//        });
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+            }
+        });
 //
 //        AdView mAdview = findViewById(R.id.adView);
 //        AdRequest adRequest = new AdRequest.Builder().build();

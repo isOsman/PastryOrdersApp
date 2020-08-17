@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -18,13 +19,22 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    InterstitialAd interstitialAd;
 
     Storage storage;
     OrderAdapter adapter;
@@ -37,12 +47,50 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_main);
 
+
+        //add: start
+//        MobileAds.initialize(this);
+        interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+
+        List<String> testDevs = new ArrayList<>();
+        testDevs.add("2WGDU17A14000038");
+        testDevs.add("192.168.169.102:5555 ");
+
+        RequestConfiguration configuration =
+                new RequestConfiguration.Builder().setTestDeviceIds(testDevs).build();
+        MobileAds.setRequestConfiguration(configuration);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        interstitialAd.loadAd(adRequest);
+
+        //on close add
+        interstitialAd.setAdListener(new AdListener(){
+            @Override
+            public void onAdClosed() {
+                try{
+                    Intent intent = new Intent(MainActivity.this,TopLevelActivity.class);
+                    startActivity(intent);
+                    finish();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        //add: end
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.ordersItem);
         setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+
+
+
+
 
 
 //        Intent serviceIntent = new Intent(this,MyService.class);
@@ -89,6 +137,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+    }
+
+
+    //on back arrow click
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        //show add if loaded
+        if(interstitialAd.isLoaded()){
+            interstitialAd.show();
+        }else {
+            //back to TopLevelActivity
+            super.onBackPressed();
+        }
     }
 
     private void setAlarm() {
