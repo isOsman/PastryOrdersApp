@@ -1,26 +1,70 @@
 package com.example.osman.orders;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TipActivity extends AppCompatActivity {
+
+    InterstitialAd interstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tip);
+
+        //add: start
+//        MobileAds.initialize(this);
+        interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+
+        List<String> testDevs = new ArrayList<>();
+        testDevs.add("2WGDU17A14000038");
+        testDevs.add("192.168.169.102:5555 ");
+
+        RequestConfiguration configuration =
+                new RequestConfiguration.Builder().setTestDeviceIds(testDevs).build();
+        MobileAds.setRequestConfiguration(configuration);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        interstitialAd.loadAd(adRequest);
+
+        //on close add
+        interstitialAd.setAdListener(new AdListener(){
+            @Override
+            public void onAdClosed() {
+                try{
+                    Intent intent = new Intent(TipActivity.this,TopLevelActivity.class);
+                    startActivity(intent);
+                    finish();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        //add: end
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.tipsItem);
@@ -76,5 +120,23 @@ public class TipActivity extends AppCompatActivity {
         storage.writeTips(tips);
 
 
+    }
+
+    //on back arrow click
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        //show add if loaded
+        if(interstitialAd.isLoaded()){
+            interstitialAd.show();
+        }else {
+            //back to TopLevelActivity
+            super.onBackPressed();
+        }
     }
 }
