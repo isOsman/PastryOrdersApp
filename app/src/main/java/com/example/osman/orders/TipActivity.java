@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -58,6 +59,7 @@ public class TipActivity extends AppCompatActivity {
 
 //        Toast.makeText(this,"PARSED DATE: " + date.toString(),Toast.LENGTH_SHORT).show();
         if(readyTip<1) return;
+
         for (int i = 0;(i<tips.size()) && (readyTip>=1);i++){
             if(!tips.get(i).isOpen() && (!tips.get(i).isCanOpen())){
                 tips.get(i).setCanOpen(true);
@@ -65,7 +67,14 @@ public class TipActivity extends AppCompatActivity {
             }
         }
 
-        storage.writeDate(new Date().getTime()+"");
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY,DateUtils.WAKE_HOUR);
+        calendar.set(Calendar.MINUTE,0);
+        Date writeDate = calendar.getTime();
+        Log.d(Storage.TAG,"next tip date: " + writeDate.toString());
+        storage.writeDate(writeDate.getTime()+"");
         storage.writeTips(tips);
+
+
     }
 }

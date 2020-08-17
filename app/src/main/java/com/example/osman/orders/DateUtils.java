@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class DateUtils {
+
+    public static final int WAKE_HOUR = 7;
     //return  date in a localized format
     public static String getDate() {
         return new SimpleDateFormat("dd.MM.yyyy").format(new Date());

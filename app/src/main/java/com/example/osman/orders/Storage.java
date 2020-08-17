@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -126,8 +127,11 @@ public class Storage {
         lastDateFile = new File(root + "/" + folderName,lastSessionDate);
         if(!lastDateFile.exists()){
             lastDateFile.createNewFile();
-            Date date = new Date();
-            String strDate = date.getTime()+"";
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY,DateUtils.WAKE_HOUR);
+            calendar.set(Calendar.MINUTE,0);
+            Date writeDate = calendar.getTime();
+            String strDate = writeDate.getTime()+"";
             try {
                 Log.d(TAG, "writeDate: " + strDate);
                 writeDate(strDate);
@@ -145,7 +149,8 @@ public class Storage {
                 Log.d(TAG,"parsed date: " + date.toString());
                 Log.d(TAG,"minutes diff: " + DateUtils.getDateDiff(date,new Date(), TimeUnit.MINUTES));
             }catch (Exception e){
-                Log.d(TAG,"fail to parse date");
+                Log.d(TAG,"FAIL TO PARSE DATE");
+                e.printStackTrace();
             }
 
         }
