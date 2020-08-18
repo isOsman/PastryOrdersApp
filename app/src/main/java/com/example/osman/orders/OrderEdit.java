@@ -12,12 +12,22 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 
 public class OrderEdit extends Activity implements View.OnClickListener {
+
+//    private InterstitialAd interstitialAd;
 
     private TextView orderIdView;
     private EditText customerView;
@@ -38,6 +48,38 @@ public class OrderEdit extends Activity implements View.OnClickListener {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_edit);
+
+        //add: start
+//        MobileAds.initialize(this);
+//        interstitialAd = new InterstitialAd(this);
+//        interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+//
+//        List<String> testDevs = new ArrayList<>();
+//        testDevs.add("2WGDU17A14000038");
+//        testDevs.add("192.168.169.102:5555 ");
+//
+//        RequestConfiguration configuration =
+//                new RequestConfiguration.Builder().setTestDeviceIds(testDevs).build();
+//        MobileAds.setRequestConfiguration(configuration);
+//
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        interstitialAd.loadAd(adRequest);
+
+        //on close add
+//        interstitialAd.setAdListener(new AdListener(){
+//            @Override
+//            public void onAdClosed() {
+//                try{
+//                    Intent intent = new Intent(TipActivity.this,TopLevelActivity.class);
+//                    startActivity(intent);
+//                    finish();
+//                }catch (Exception e){
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+
+        //add: end
 
         //fill all views
         Bundle extras = getIntent().getExtras();
@@ -106,12 +148,19 @@ public class OrderEdit extends Activity implements View.OnClickListener {
             madeView.setText(madeView.isChecked() ? getString(R.string.madeTrue) : getString(R.string.madeFalse));
         }
         if(view.getId() == R.id.cancelBtn) {
+
+            //show add
+//            showAdd();
+
             Intent intent = new Intent();
             setResult(RESULT_CANCELED,intent);
             finish();
         }else if (view.getId() == R.id.okBtn){
 
             if (!checkViews()) return;
+
+            //show add
+//            showAdd();
 
             Intent intent = new Intent();
             intent.putExtra("orderId",editOrder.getId());
@@ -157,5 +206,21 @@ public class OrderEdit extends Activity implements View.OnClickListener {
             e.printStackTrace();
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        //show add
+//        showAdd();
+        super.onBackPressed();
+    }
+
+
+    public void showAdd(){
+        //use random for show add
+//        Random random = new Random();
+//        if (random.nextBoolean() && interstitialAd.isLoaded()){
+//            interstitialAd.show();
+//        }
     }
 }
