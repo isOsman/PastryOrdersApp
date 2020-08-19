@@ -9,4 +9,5 @@
     <color name="card_diff_text">#777E7D</color>
     <color name="color_unlock">#8EEF28</color>
     <color name="color_lock">#B4E53935</color>
+    <color name="color_pay_text">#7FFF00</color>
 </resources>

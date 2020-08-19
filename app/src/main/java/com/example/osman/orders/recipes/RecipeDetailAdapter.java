@@ -8,16 +8,20 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.example.osman.orders.MathUtils;
 import com.example.osman.orders.R;
 
 public class RecipeDetailAdapter extends FragmentStatePagerAdapter {
 
     private Recipe recipe;
     private Context context;
+    private int contentLimit;
     public RecipeDetailAdapter(FragmentManager fm, Recipe recipe, Context context){
         super(fm);
         this.recipe = recipe;
         this.context = context;
+        //limit free content
+        this.contentLimit = MathUtils.getPercent(recipe.getSteps().size(),MathUtils.DEFAULT_CONTENT_PERCENT);
     }
 
 
@@ -25,6 +29,9 @@ public class RecipeDetailAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0 ) return RecipeIngredientsFragment.newInstance(recipe.getIngredients());
+        if(!recipe.isOpen()) {
+            if (position > contentLimit) return RecipePayFragment.newInstance();
+        }
         return RecipeFragment.newInstance(recipe.getSteps().get(position-1));
     }
 
@@ -37,6 +44,9 @@ public class RecipeDetailAdapter extends FragmentStatePagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
 //        if(position == 0) return context.getString(R.string.recipe_ingredients);
+//        if(position>contentLimit){
+//            return "Купите";
+//        }
         return  (context.getString(R.string.step_title) + " " + (position+1));
 
     }
