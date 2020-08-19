@@ -1,5 +1,6 @@
 package com.example.osman.orders.recipes;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.osman.orders.R;
@@ -28,10 +30,12 @@ public class RecipeFragment extends Fragment {
         return recipeFragment;
     }
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recipe_step,null);
+
         Bundle args = getArguments();
         TextView stepText = view.findViewById(R.id.step_text);
         stepText.setText(args.getString(INSTRUCTION));
