@@ -41,5 +41,6 @@
     <string name="diff_hard">Сложно</string>
     <string name="step_title">Шаг </string>
     <string name="recipe_ingredients">Ингредиенты</string>
+    <string name="pay_content">Приобрести продолжение</string>
 </resources>
 
