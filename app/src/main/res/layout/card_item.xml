@@ -63,6 +63,16 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/card_diff_margin" />
 
+
+            <ImageView
+                android:id="@+id/isOpen"
+                android:layout_width="@dimen/card_time_img_size"
+                android:layout_height="@dimen/card_time_img_size"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/lock"
+                android:backgroundTint="@color/color_lock"/>
+
             <TextView
                 android:id="@+id/time_text"
                 android:layout_width="wrap_content"

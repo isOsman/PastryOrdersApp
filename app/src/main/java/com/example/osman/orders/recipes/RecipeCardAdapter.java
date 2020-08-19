@@ -2,12 +2,12 @@ package com.example.osman.orders.recipes;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -31,7 +31,7 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
         public ImageView diffImg;
         public TextView diffText;
         public TextView timeText;
-//        public ImageView timeImg;
+        public ImageView isOpenImg;
         public TextView cakeDesc;
 
         public ViewHolder(View card){
@@ -42,7 +42,7 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
             diffImg = (ImageView) card.findViewById(R.id.diff_img);
             diffText = (TextView) card.findViewById(R.id.diff_text);
             timeText = (TextView) card.findViewById(R.id.time_text);
-//            timeImg = (ImageView) card.findViewById(R.id.time_img);
+            isOpenImg = (ImageView) card.findViewById(R.id.isOpen);
             cakeDesc = (TextView) card.findViewById(R.id.cake_desc);
 
         }
@@ -69,15 +69,35 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
         int diff_img = -1;
         int diff_text_id = -1;
 
-        holder.view.setOnClickListener(new CardClickListener(position));
-
-        holder.cakeTitle.setText(dataset.get(position).getTitle());
 
         Picasso.get()
                 .load(dataset.get(position).getImgId())
                 .placeholder(R.drawable.logo)
                 .resize(512,512)
                 .into(holder.cakeImg);
+
+
+        if(dataset.get(position).isOpen()){
+            holder.isOpenImg.setBackgroundResource(R.drawable.unlock);
+            holder.isOpenImg.setBackgroundTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.color_unlock)));
+//            holder.isOpenImg.setColorFilter(context.getResources().getColor(R.color.color_unlock));
+        }
+//        else{
+//            holder.isOpenImg.setImageResource(R.drawable.lock);
+//            holder.isOpenImg.setBackgroundTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.color_lock)));
+////            holder.isOpenImg.setColorFilter(context.getResources().getColor(R.color.color_lock));
+//        }
+
+
+
+
+
+
+        holder.view.setOnClickListener(new CardClickListener(position));
+
+        holder.cakeTitle.setText(dataset.get(position).getTitle());
+
+
 
 
 

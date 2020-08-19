@@ -50,7 +50,7 @@ public class RecipeData {
         recipe.setOpen(true);
         Recipe maffin = recipe.build();
 
-        recipe.setImgId(R.drawable.logo);
+        recipe.setImgId(R.drawable.lion);
         recipe.setTitle("Эклеры по американски");
         recipe.setOpen(true);
         Recipe ecclere = recipe.build();
