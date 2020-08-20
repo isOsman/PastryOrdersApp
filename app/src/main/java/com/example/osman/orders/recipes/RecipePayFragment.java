@@ -15,25 +15,31 @@ import androidx.fragment.app.Fragment;
 
 import com.example.osman.orders.R;
 
+import java.io.IOException;
+
 public class RecipePayFragment extends Fragment {
 
-    Recipe recipe;
-    PayListener listener;
+    private Recipe.Step step;
+    private PayListener listener;
 
-    public RecipePayFragment(PayListener listener){
+    private View payView;
+    private Button payBtn;
+
+    public RecipePayFragment(PayListener listener,Recipe.Step step){
         this.listener = listener;
+        this.step = step;
     }
 
-    public static RecipePayFragment newInstance(PayListener listener){
-        return new RecipePayFragment(listener);
+    public static RecipePayFragment newInstance(PayListener listener,Recipe.Step step){
+        return new RecipePayFragment(listener,step);
 
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View payView = inflater.inflate(R.layout.recipe_pay_and_step,null);
-        final Button payBtn = (Button) payView.findViewById(R.id.pay_btn);
+        payView = inflater.inflate(R.layout.recipe_pay_and_step,null);
+        payBtn = (Button) payView.findViewById(R.id.pay_btn);
 
 
 
@@ -41,14 +47,13 @@ public class RecipePayFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(),"Click",Toast.LENGTH_SHORT).show();
-                listener.onPay();
-//                payView.findViewById(R.id.recipe_pay_layout).setVisibility(View.GONE);
-//                recipe.setOpen(true);
-//                View view1 = payView.findViewById(R.id.recipe_step_layout);
-//                ((TextView)view1.findViewById(R.id.step_text)).setText("sdflkjsdlkf sdlkfj sdlfkj sdfjslkdfjslkdf sdlkf");
-//                ((ImageView) view1.findViewById(R.id.step_img)).setBackgroundResource(R.drawable.clock);
-//                view1.setVisibility(View.VISIBLE);
+                try {
+                    listener.onPay();
+                } catch (IOException | ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
 
+                update();
 
             }
         });
@@ -59,8 +64,18 @@ public class RecipePayFragment extends Fragment {
     }
 
     public interface PayListener{
-        void onPay();
+        void onPay() throws IOException, ClassNotFoundException;
 
+    }
+
+
+
+    public void update(){
+        payView.findViewById(R.id.recipe_pay_layout).setVisibility(View.GONE);
+        View stepView = payView.findViewById(R.id.recipe_step_layout);
+        ((TextView)stepView.findViewById(R.id.step_text)).setText(step.getInstruction());
+        ((ImageView) stepView.findViewById(R.id.step_img)).setBackgroundResource(step.getImgId());
+        stepView.setVisibility(View.VISIBLE);
     }
 
 

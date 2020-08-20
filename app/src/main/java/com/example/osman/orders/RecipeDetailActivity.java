@@ -14,6 +14,8 @@ import com.example.osman.orders.recipes.Recipe;
 import com.example.osman.orders.recipes.RecipeDetailAdapter;
 import com.google.android.material.tabs.TabLayout;
 
+import java.io.IOException;
+
 public class RecipeDetailActivity extends AppCompatActivity {
     public static final String RECIPE_EXTRA = "RECIPE";
     public static final String TAG = "RD_TAG";
@@ -51,7 +53,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
 
 
-        pagerAdapter = new RecipeDetailAdapter(getSupportFragmentManager(),recipe,this);
+        pagerAdapter = new RecipeDetailAdapter(getSupportFragmentManager(),recipe,this,viewPager);
         viewPager.setAdapter(pagerAdapter);
 
 

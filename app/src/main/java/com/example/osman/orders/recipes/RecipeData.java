@@ -47,22 +47,30 @@ public class RecipeData {
 
         recipe.setDifficult(Recipe.DIFF_EASY);
         recipe.setTitle("Маффины от мафиози");
-        recipe.setOpen(true);
+        recipe.setOpen(false);
         Recipe maffin = recipe.build();
 
         recipe.setImgId(R.drawable.logo);
         recipe.setTitle("Эклеры по американски");
-        recipe.setOpen(true);
+        recipe.setOpen(false);
         Recipe ecclere = recipe.build();
 
+        recipe.setTitle("Трайфл");
+        recipe.setOpen(false);
+        Recipe tryfle = recipe.build();
+
+
         recipes = new Recipe[]{
-                napoleon
+                tryfle
+                ,napoleon
                 ,zebra
+                ,tryfle
                 ,maffin
                 ,ecclere
                 ,napoleon
                 ,zebra
                 ,ecclere
+                ,tryfle
         };
     }
 
