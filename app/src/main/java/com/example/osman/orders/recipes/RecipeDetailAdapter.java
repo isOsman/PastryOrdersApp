@@ -30,7 +30,7 @@ public class RecipeDetailAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         if (position == 0 ) return RecipeIngredientsFragment.newInstance(recipe.getIngredients());
         if(!recipe.isOpen()) {
-            if (position > contentLimit) return RecipePayFragment.newInstance();
+            if (position > contentLimit) return RecipePayFragment.newInstance(recipe);
         }
         return RecipeFragment.newInstance(recipe.getSteps().get(position-1));
     }

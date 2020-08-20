@@ -31,9 +31,7 @@ public class RecipeActivity extends AppCompatActivity {
         ArrayList<Recipe> recipeArrayList = null;
         try {
             recipeArrayList = Storage.getInstance(this).getRecipes();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
