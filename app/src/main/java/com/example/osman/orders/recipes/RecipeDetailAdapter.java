@@ -1,6 +1,7 @@
 package com.example.osman.orders.recipes;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,7 +12,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.example.osman.orders.MathUtils;
 import com.example.osman.orders.R;
 
-public class RecipeDetailAdapter extends FragmentStatePagerAdapter {
+public class RecipeDetailAdapter extends FragmentStatePagerAdapter implements RecipePayFragment.PayListener {
 
     private Recipe recipe;
     private Context context;
@@ -30,7 +31,7 @@ public class RecipeDetailAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         if (position == 0 ) return RecipeIngredientsFragment.newInstance(recipe.getIngredients());
         if(!recipe.isOpen()) {
-            if (position > contentLimit) return RecipePayFragment.newInstance(recipe);
+            if (position > contentLimit) return RecipePayFragment.newInstance(this);
         }
         return RecipeFragment.newInstance(recipe.getSteps().get(position-1));
     }
@@ -49,5 +50,12 @@ public class RecipeDetailAdapter extends FragmentStatePagerAdapter {
 //        }
         return  (context.getString(R.string.step_title) + " " + (position+1));
 
+    }
+
+    @Override
+    public void onPay() {
+        Log.d(Recipe.RTAG, "onPay: ");
+        recipe.setOpen(true);
+        notifyDataSetChanged();
     }
 }
