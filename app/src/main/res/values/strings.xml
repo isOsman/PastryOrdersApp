@@ -5,6 +5,7 @@
     <string name="orderDate">"Дата заказа:"</string>
     <string name="sendDate">"Дата отправки:"</string>
     <string name="weight">"Масса:"</string>
+    <string name="weight_with_unit">Масса(кг) :</string>
     <string name="price">"Цена:"</string>
     <string name="made">"Выполнен"</string>
     <string name="weight_unit">"кг"</string>
