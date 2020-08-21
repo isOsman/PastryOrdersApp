@@ -32,6 +32,7 @@ public class Storage {
     private String tipName = "tip.ord";
     private String lastSessionDate = "last_session_date.ord";
     private String recipes = "recipes.ord";
+    private String add = "add.ord";
 
     private FileInputStream fin;
     private FileOutputStream fos;
@@ -42,6 +43,7 @@ public class Storage {
     private File tipFile;
     private File lastDateFile;
     private File recipesFile;
+    private File addFile;
 
     static String TAG = "FILETAG";
 
@@ -182,6 +184,38 @@ public class Storage {
         }
 
 
+        addFile = new File(root + "/" + folderName,add);
+        if(!addFile.exists()){
+            addFile.createNewFile();
+            Log.d(TAG,"addfile created: " + addFile.getAbsolutePath());
+            writeAddStatus(Request.ADD_ON);
+        }else{
+            Log.d(TAG,"addfile ready");
+            Log.d(TAG, "addfile status: " + getAddStatus());
+        }
+
+
+    }
+
+
+    public void writeAddStatus(String status) throws IOException {
+        Log.d(TAG,"writeAddStatus()");
+        FileWriter fileWriter = new FileWriter(addFile);
+        fileWriter.write(status);
+        fileWriter.close();
+    }
+
+    public String getAddStatus() throws FileNotFoundException {
+        Log.d(TAG,"getAdd()");
+        Scanner scan = new Scanner(addFile);
+        String date = scan.next();
+        scan.close();
+        return date;
+    }
+
+    public boolean addIsOn() throws FileNotFoundException {
+        Log.d(TAG,"addIsOn()");
+        return getAddStatus().equals(Request.ADD_ON);
     }
 
     public void writeDate(String date) throws IOException {

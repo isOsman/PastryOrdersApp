@@ -7,6 +7,9 @@ import androidx.appcompat.widget.Toolbar;
 public abstract class Request {
     public static final int ORDER_ADD = 1;
     public static final int ORDER_EDIT = 2;
+    public static final String ADD_ON = "ON";
+    public static final String ADD_OFF = "OFF";
+    public static boolean ADD_IS_ON = true;
 
     public static String getRequestName(int requestCode) {
         if (requestCode == 1) {

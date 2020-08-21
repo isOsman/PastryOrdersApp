@@ -25,9 +25,9 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -47,6 +47,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_main);
 
+
+        try {
+            storage = Storage.getInstance(this);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         //add: start
 //        MobileAds.initialize(this);
@@ -78,7 +84,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        //add: end
+            //add: end
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.ordersItem);
@@ -99,11 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        }
 
 
-        try {
-            storage = Storage.getInstance(this);
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
 
         //setAlarm();
 
@@ -150,11 +153,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onBackPressed() {
         //show add if loaded
-        if(interstitialAd.isLoaded()){
-            interstitialAd.show();
-        }else {
-            //back to TopLevelActivity
-            super.onBackPressed();
+        try {
+            //if add is on and add is loaded : show
+            if(storage.addIsOn() && interstitialAd.isLoaded()){
+                interstitialAd.show();
+            }else {
+                //back to TopLevelActivity
+                super.onBackPressed();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 

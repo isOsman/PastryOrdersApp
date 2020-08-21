@@ -176,7 +176,7 @@ public class OrderAdd extends Activity implements View.OnClickListener {
     public void showAdd(){
         //use random for show add
 //        Random random = new Random();
-        if (interstitialAd.isLoaded()){
+        if (Request.ADD_IS_ON && interstitialAd.isLoaded()){
             interstitialAd.show();
         }
     }

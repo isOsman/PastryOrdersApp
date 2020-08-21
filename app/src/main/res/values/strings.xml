@@ -44,5 +44,9 @@
     <string name="step_title">Шаг </string>
     <string name="recipe_ingredients">Ингредиенты</string>
     <string name="pay_content">Приобрести продолжение</string>
+
+<!--    OtherActivity-->
+    <string name="app_add">Я кондитер-PRO</string>
+    <string name="add_off">Отключить рекламу</string>
 </resources>
 

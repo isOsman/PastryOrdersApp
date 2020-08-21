@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OtherActivity"
+    android:orientation="vertical">
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/app_toolbar"/>
+
+    <Button
+        android:id="@+id/app_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/btn_margin"
+        android:background="@drawable/btn_background"
+        android:text="Включить рекламу"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FA0F88"
+        android:textSize="@dimen/tip_text_size"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/add_off"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/btn_margin"
+        android:background="@drawable/btn_background"
+        android:text="@string/add_off"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FA0F88"
+        android:textSize="@dimen/tip_text_size"
+        android:layout_gravity="center_horizontal" />
+
+
+
+
+
+
+</LinearLayout>

@@ -11,11 +11,13 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class TopLevelActivity extends AppCompatActivity {
 
 
+    Storage storage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,18 +25,15 @@ public class TopLevelActivity extends AppCompatActivity {
         setContentView(R.layout.activity_top_level);
 
         try {
-            Storage.getInstance(this);
+            storage = Storage.getInstance(this);
+            Request.ADD_IS_ON = storage.addIsOn();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
 //        BANNER ADD
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            MobileAds.initialize(this);
 
-            }
-        });
 //
 //        AdView mAdview = findViewById(R.id.adView);
 //        AdRequest adRequest = new AdRequest.Builder().build();
@@ -49,6 +48,8 @@ public class TopLevelActivity extends AppCompatActivity {
             startActivity(new Intent(this,TipActivity.class));
         }else if(view.getId() == R.id.recipesBtn){
             startActivity(new Intent(this,RecipeActivity.class));
+        }else if(view.getId() == R.id.otherBtn){
+            startActivity(new Intent(this,OtherActivity.class));
         }
     }
 }

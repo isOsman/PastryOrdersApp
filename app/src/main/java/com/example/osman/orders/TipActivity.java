@@ -132,7 +132,7 @@ public class TipActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         //show add if loaded
-        if(interstitialAd.isLoaded()){
+        if(Request.ADD_IS_ON && interstitialAd.isLoaded()){
             interstitialAd.show();
         }else {
             //back to TopLevelActivity
