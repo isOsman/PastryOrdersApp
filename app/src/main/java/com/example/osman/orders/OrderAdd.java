@@ -121,8 +121,8 @@ public class OrderAdd extends Activity implements View.OnClickListener {
             intent.putExtra("cake",cakeView.getText());
             intent.putExtra("orderDate",getDate(orderDateView));
             intent.putExtra("sendDate",getDate(sendDateView));
-            intent.putExtra("weight",Integer.parseInt(weightView.getText().toString()));
-            intent.putExtra("price",Integer.parseInt(priceView.getText().toString()));
+            intent.putExtra("weight",Double.parseDouble(weightView.getText().toString()));
+            intent.putExtra("price",Double.parseDouble(priceView.getText().toString()));
             intent.putExtra("made",madeView.isChecked());
             setResult(RESULT_OK,intent);
             finish();
@@ -132,8 +132,8 @@ public class OrderAdd extends Activity implements View.OnClickListener {
     private boolean checkViews(){
         if(customerView.getText().toString().trim().length() == 0
                 || cakeView.getText().toString().trim().length() == 0
-                || (weightView.getText().toString().trim().length() == 0 || weightView.getText().toString().trim().length() > 5)
-                || (priceView.getText().toString().trim().length() == 0 || priceView.getText().toString().trim().length() > 5))
+                || (weightView.getText().toString().trim().length() == 0 || weightView.getText().toString().trim().length() > 10)
+                || (priceView.getText().toString().trim().length() == 0 || priceView.getText().toString().trim().length() > 10))
         {
             Toast.makeText(this,R.string.checkView,Toast.LENGTH_SHORT).show();
             return false;
@@ -175,8 +175,8 @@ public class OrderAdd extends Activity implements View.OnClickListener {
 
     public void showAdd(){
         //use random for show add
-        Random random = new Random();
-        if (random.nextBoolean() && interstitialAd.isLoaded()){
+//        Random random = new Random();
+        if (interstitialAd.isLoaded()){
             interstitialAd.show();
         }
     }

@@ -186,8 +186,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 order.setCake(String.valueOf(extras.get("cake")));
                 order.setOrderDate(extras.getString("orderDate"));
                 order.setSendDate(extras.getString("sendDate"));
-                order.setWeight(extras.getInt("weight"));
-                order.setPrice(extras.getInt("price"));
+                order.setWeight(extras.getDouble("weight"));
+                order.setPrice(extras.getDouble("price"));
                 order.setMade(extras.getBoolean("made"));
                 adapter.setList(adapter.currPos, order);
                 Toast.makeText(this, R.string.changed, Toast.LENGTH_LONG).show();
@@ -206,8 +206,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 order.setCake(String.valueOf(extras.get("cake")));
                 order.setOrderDate(extras.getString("orderDate"));
                 order.setSendDate(extras.getString("sendDate"));
-                order.setWeight(extras.getInt("weight"));
-                order.setPrice(extras.getInt("price"));
+                order.setWeight(extras.getDouble("weight"));
+                order.setPrice(extras.getDouble("price"));
                 order.setMade(extras.getBoolean("made"));
                 adapter.add(order);
                 adapter.notifyDataSetChanged();

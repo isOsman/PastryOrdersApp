@@ -14,15 +14,15 @@ public class Order implements Serializable {
     private String cake;//торт
     private String orderDate;//дата заказа
     private String sendDate;//дата отправки
-    private int weight;//масса торта
-    private int price;//цена
+    private double weight;//масса торта
+    private double price;//цена
     private boolean made;//выполнен
 
 
     //constructors
     public Order(){}
 
-    public Order(int id,String customer, String cake, String orderDate, String sendDate, int weight, int price, boolean made) {
+    public Order(int id,String customer, String cake, String orderDate, String sendDate, double weight, double price, boolean made) {
         this.id = id;
         this.customer = customer;
         this.cake = cake;
@@ -74,19 +74,19 @@ public class Order implements Serializable {
         this.sendDate = sendDate;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
