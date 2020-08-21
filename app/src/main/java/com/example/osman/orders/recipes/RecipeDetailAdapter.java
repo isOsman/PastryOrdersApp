@@ -20,19 +20,21 @@ import java.util.ArrayList;
 public class RecipeDetailAdapter extends FragmentStatePagerAdapter implements RecipePayFragment.PayListener {
 
 
+//    private AdapterPayListener listener;
     private ViewPager viewPager;
     private Recipe recipe;
     private Context context;
     private int contentLimit;
     private boolean payed;
 
-    public RecipeDetailAdapter(FragmentManager fm, Recipe recipe, Context context,ViewPager viewPager) {
+    public RecipeDetailAdapter(FragmentManager fm, Recipe recipe, Context context, ViewPager viewPager) {
         super(fm);
         this.recipe = recipe;
         this.context = context;
         //limit free content
         this.contentLimit = MathUtils.getPercent(recipe.getSteps().size(),MathUtils.DEFAULT_CONTENT_PERCENT);
         this.viewPager = viewPager;
+//        this.listener = listener;
     }
 
 
@@ -77,7 +79,7 @@ public class RecipeDetailAdapter extends FragmentStatePagerAdapter implements Re
         Storage storage = Storage.getInstance(context);
         ArrayList<Recipe> recipes = storage.getRecipes();
         for(Recipe r : recipes){
-            if(r.getTitle().equalsIgnoreCase(recipe.getTitle())){
+            if(r.getSKU_ID().equalsIgnoreCase(recipe.getSKU_ID())){
                 r.setOpen(true);
                 Log.d(Recipe.RTAG, "onPay: setopen");
                 break;
@@ -91,6 +93,7 @@ public class RecipeDetailAdapter extends FragmentStatePagerAdapter implements Re
         storage.writeRecipes(recipes);
         Log.d(Recipe.RTAG, "onPay: writerecipes ");
 
+//        listener.onPay();
 
     }
 
@@ -105,4 +108,8 @@ public class RecipeDetailAdapter extends FragmentStatePagerAdapter implements Re
 
         return super.getItemPosition(object);
     }
+
+//    public interface AdapterPayListener{
+//        void onPay();
+//    }
 }

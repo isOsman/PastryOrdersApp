@@ -14,6 +14,7 @@ public class Recipe implements Serializable {
     public static int DIFF_HARD = 3;
 
 
+    private String SKU_ID;
     private String title;
     private int imgId;
     private int difficult; //difficult:easy,medium,hard
@@ -26,7 +27,8 @@ public class Recipe implements Serializable {
 
     public Recipe(){}
 
-    public Recipe(String title,int imgId,int difficult,int cookingTimeMins,String[] ingredients,String description,ArrayList<Step> steps,boolean open){
+    public Recipe(String SKU_ID,String title,int imgId,int difficult,int cookingTimeMins,String[] ingredients,String description,ArrayList<Step> steps,boolean open){
+        this.SKU_ID = SKU_ID;
         this.title = title;
         this.imgId = imgId;
         this.difficult = difficult;
@@ -40,10 +42,17 @@ public class Recipe implements Serializable {
 
     //pseudo - builder
     public Recipe build(){
-        return new Recipe(this.title,this.imgId,this.difficult,this.cookingTimeMins,this.ingredients,this.description,this.steps,this.open);
+        return new Recipe(this.SKU_ID,this.title,this.imgId,this.difficult,this.cookingTimeMins,this.ingredients,this.description,this.steps,this.open);
     }
 
     // get - set
+    public String getSKU_ID(){return SKU_ID;}
+
+    public void setSKU_ID(String SKU_ID){
+        this.SKU_ID = SKU_ID;
+    }
+
+
     public String getTitle(){return title;}
 
     public void setTitle(String title){
@@ -153,6 +162,7 @@ public class Recipe implements Serializable {
     @Override
     public String toString() {
         return "Recipe{" +
+                "SKU_ID=" + SKU_ID +
                 "title=" + title +
                 ", imgId=" + imgId +
                 ", difficult=" + difficult +

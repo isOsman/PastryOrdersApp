@@ -16,6 +16,9 @@ import java.util.ArrayList;
 
 public class RecipeActivity extends AppCompatActivity {
 
+    RecyclerView recyclerView;
+    RecipeCardAdapter recipeCardAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,18 +39,20 @@ public class RecipeActivity extends AppCompatActivity {
         }
 
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rec_view);
+        recyclerView = (RecyclerView) findViewById(R.id.rec_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        RecipeCardAdapter recipeCardAdapter = new RecipeCardAdapter(this,recipeArrayList);
+        recipeCardAdapter = new RecipeCardAdapter(this,recipeArrayList);
         recyclerView.setAdapter(recipeCardAdapter);
 
 
+    }
 
-
-
-
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        recipeCardAdapter.notifyDataSetChanged();
     }
 }
