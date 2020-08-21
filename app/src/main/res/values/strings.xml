@@ -29,6 +29,7 @@
     <string name="ordersItem">"Заказы"</string>
     <string name="recipesItem">"Рецепты"</string>
     <string name="tipsItem">"Советы"</string>
+    <string name="otherItem">"Другое"</string>
 
     <!--    SplashActivity-->
     <string name="partner">Совместо с @SHIRIN_CAKES_</string>

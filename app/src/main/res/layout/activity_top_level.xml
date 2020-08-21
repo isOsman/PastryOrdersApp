@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/image"
         android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/basic_margin"
+        android:layout_margin="@dimen/btn_margin"
         android:background="@drawable/btn_background"
         android:onClick="btnClick"
         android:text="@string/ordersItem"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/orderBtn"
         android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/basic_margin"
+        android:layout_margin="@dimen/btn_margin"
         android:background="@drawable/btn_background"
         android:text="@string/recipesItem"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/recipesBtn"
         android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/basic_margin"
+        android:layout_margin="@dimen/btn_margin"
         android:background="@drawable/btn_background"
         android:text="@string/tipsItem"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -58,16 +58,22 @@
         android:onClick="btnClick"
         />
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
+    <Button
+        android:id="@+id/otherBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tipsBtn"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
-    </com.google.android.gms.ads.AdView>
+        android:layout_margin="@dimen/btn_margin"
+        android:background="@drawable/btn_background"
+        android:text="@string/otherItem"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FA0F88"
+        android:textSize="@dimen/basic_text_size"
+        android:onClick="btnClick"
+        />
+
+
 
 
 </RelativeLayout>
