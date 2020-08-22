@@ -64,6 +64,8 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-9090524505223693~6732044329" />
+
+        <receiver android:name=".MyReceiver" android:enabled="true"/>
     </application>
 
 </manifest>

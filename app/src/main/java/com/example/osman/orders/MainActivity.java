@@ -1,12 +1,9 @@
 package com.example.osman.orders;
 
 import android.app.ActivityManager;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -28,9 +25,7 @@ import com.google.android.gms.ads.RequestConfiguration;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -166,20 +161,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void setAlarm() {
-        Log.d("MYTAG","Start Alarm");
-        Intent intent = new Intent(this,MyReceiver.class);
-        PendingIntent alarmIntent = PendingIntent.getBroadcast(this,0,intent,0);
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR,3);
-        calendar.set(Calendar.MINUTE,51);
-
-        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),TimeUnit.MINUTES.toMillis(1),alarmIntent);
-
-
-    }
 
 
     @Override

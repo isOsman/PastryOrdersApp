@@ -17,7 +17,7 @@ public class MyReceiver extends BroadcastReceiver {
 
     private void showNotification(Context context) {
         int NOTIFICATION_ID = 101;
-        Intent notificationIntent = new Intent(context,MainActivity.class);
+        Intent notificationIntent = new Intent(context,TopLevelActivity.class);
         PendingIntent contentIntent =
                 PendingIntent.getActivity(context,0,notificationIntent,PendingIntent.FLAG_UPDATE_CURRENT);
 
