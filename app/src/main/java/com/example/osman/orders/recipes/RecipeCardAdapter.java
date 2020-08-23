@@ -124,7 +124,21 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
 
         holder.diffText.setText(diff_text_id);
 
-        holder.timeText.setText(dataset.get(position).getCookingTimeMins()+"");
+        int mins = dataset.get(position).getCookingTimeMins();
+        int hour = 60;
+
+
+
+        if(mins<=hour){
+            holder.timeText.setText(mins+context.getString(R.string.minute_unit));
+        }else{
+            int resMins,resHours;
+            resHours = mins / hour;
+            resMins = mins % hour;
+            holder.timeText.setText(resHours + context.getString(R.string.hour_unit) + resMins + context.getString(R.string.minute_unit));
+        }
+
+
 //        holder.timeImg.setImageResource(R.drawable.clock);
         holder.cakeDesc.setText(dataset.get(position).getDescription());
 

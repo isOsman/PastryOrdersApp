@@ -31,6 +31,9 @@ public class TopLevelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_level);
 
+//        Log.d("MYTAG", "Start Alarm");
+//        Intent intent = new Intent(this, MyReceiver.class);
+//        sendBroadcast(intent);
 
         setAlarm();
 
@@ -74,8 +77,8 @@ public class TopLevelActivity extends AppCompatActivity {
             PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
             Calendar calendar = Calendar.getInstance();
-            calendar.set(Calendar.HOUR_OF_DAY, 12);
-            calendar.set(Calendar.MINUTE, 10);
+            calendar.set(Calendar.HOUR_OF_DAY, Request.NOTIFICATION_HOUR);
+            calendar.set(Calendar.MINUTE, Request.NOTIFICATION_MINUTE);
 
             AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), TimeUnit.MINUTES.toMillis(5), alarmIntent);

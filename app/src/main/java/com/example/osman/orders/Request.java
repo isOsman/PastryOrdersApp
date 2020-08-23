@@ -10,6 +10,8 @@ public abstract class Request {
     public static final String ADD_ON = "ON";
     public static final String ADD_OFF = "OFF";
     public static boolean ADD_IS_ON = true;
+    public static int NOTIFICATION_HOUR = 16;
+    public static int NOTIFICATION_MINUTE = 20;
 
     public static String getRequestName(int requestCode) {
         if (requestCode == 1) {

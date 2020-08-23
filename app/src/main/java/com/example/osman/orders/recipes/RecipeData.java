@@ -53,6 +53,7 @@ public class RecipeData {
         recipe.setTitle("Зебра");
         Recipe zebra = recipe.build();
 
+        recipe.setCookingTimeMins(125);
         recipe.setSKU_ID("RC_MAFFINS_1");
         recipe.setDifficult(Recipe.DIFF_EASY);
         recipe.setTitle("Маффины от мафиози");
@@ -65,6 +66,7 @@ public class RecipeData {
         recipe.setOpen(false);
         Recipe ecclere = recipe.build();
 
+        recipe.setCookingTimeMins(238);
         recipe.setSKU_ID("RC_TRAYFL_1");
         recipe.setTitle("Трайфл");
         recipe.setOpen(false);

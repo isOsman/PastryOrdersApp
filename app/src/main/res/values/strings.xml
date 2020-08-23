@@ -48,5 +48,15 @@
 <!--    OtherActivity-->
     <string name="app_add">Я кондитер-PRO</string>
     <string name="add_off">Отключить рекламу</string>
+
+<!--    CardView -->
+    <string name="hour_unit">ч.</string>
+    <string name="minute_unit">мин.</string>
+    <string name="about_symbol">~</string>
+
+<!--    Notifications-->
+    <string name="greeting">Привет,Кондитер!</string>
+    <string name="today_has_order">Сегодня заказ:</string>
+    <string name="new_tip">Новый совет!</string>
 </resources>
 

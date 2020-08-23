@@ -7,4 +7,6 @@ public class MathUtils {
     public static int  getPercent(int from,int percent){
         return  (int) Math.floor(from * percent / 100);
     }
+
+
 }
