@@ -98,10 +98,10 @@ public class MyReceiver extends BroadcastReceiver {
             AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), TimeUnit.MINUTES.toMillis(5), alarmIntent);
 
-            Toast.makeText(context, "Alarm started", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Alarm started", Toast.LENGTH_SHORT).show();
             Log.d(TAG,"Receiver alarm started");
         }else{
-            Toast.makeText(context, "Alarm has", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Alarm has", Toast.LENGTH_SHORT).show();
             Log.d(TAG,"Receiver alarm has");
         }
 

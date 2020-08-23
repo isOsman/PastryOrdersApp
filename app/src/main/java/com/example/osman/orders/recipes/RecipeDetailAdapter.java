@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.osman.orders.MathUtils;
 import com.example.osman.orders.R;
 import com.example.osman.orders.Storage;
+import com.example.osman.orders.dialog.BasicDialog;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -76,6 +77,8 @@ public class RecipeDetailAdapter extends FragmentStatePagerAdapter implements Re
         recipe.setOpen(true);
         notifyDataSetChanged();
         viewPager.setCurrentItem(0);
+        BasicDialog dialog = new BasicDialog();
+        dialog.showDialog(context,context.getString(R.string.recipe_pay_thanks));
         Storage storage = Storage.getInstance(context);
         ArrayList<Recipe> recipes = storage.getRecipes();
         for(Recipe r : recipes){

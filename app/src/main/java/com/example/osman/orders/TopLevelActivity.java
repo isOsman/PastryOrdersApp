@@ -32,10 +32,6 @@ public class TopLevelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_level);
 
-        BasicDialog dialog = new BasicDialog();
-
-        String s = getString(R.string.recipe_pay_thanks);
-        dialog.showDialog(this,s);
 
 //        Log.d("MYTAG", "Start Alarm");
 //        Intent intent = new Intent(this, MyReceiver.class);
@@ -89,9 +85,9 @@ public class TopLevelActivity extends AppCompatActivity {
             AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), TimeUnit.MINUTES.toMillis(5), alarmIntent);
 
-            Toast.makeText(this, "Alarm started", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Alarm started", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(this, "Alarm has", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Alarm has", Toast.LENGTH_SHORT).show();
         }
 
     }
