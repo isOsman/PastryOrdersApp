@@ -58,5 +58,10 @@
     <string name="greeting">Привет,Кондитер!</string>
     <string name="today_has_order">Сегодня заказ:</string>
     <string name="new_tip">Новый совет!</string>
+    
+<!--    dialog-->
+    <string name="recipe_pay_thanks">Благодарим вас за покупку.\nПриятного аппетита!</string>
+    <string name="add_pay_thanks">Благодарим вас за покупку!</string>
+    <string name="dialog_btn_title">Отлично</string>
 </resources>
 

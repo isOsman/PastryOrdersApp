@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.osman.orders.dialog.BasicDialog;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -30,6 +31,11 @@ public class TopLevelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_level);
+
+        BasicDialog dialog = new BasicDialog();
+
+        String s = getString(R.string.recipe_pay_thanks);
+        dialog.showDialog(this,s);
 
 //        Log.d("MYTAG", "Start Alarm");
 //        Intent intent = new Intent(this, MyReceiver.class);
