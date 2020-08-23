@@ -46,7 +46,7 @@ public class RecipePayFragment extends Fragment {
         payBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(),"Click",Toast.LENGTH_SHORT).show();
+               // Toast.makeText(view.getContext(),"Click",Toast.LENGTH_SHORT).show();
                 try {
                     listener.onPay();
                 } catch (IOException | ClassNotFoundException e) {

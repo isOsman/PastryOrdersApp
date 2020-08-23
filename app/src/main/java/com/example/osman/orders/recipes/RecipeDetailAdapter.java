@@ -96,6 +96,8 @@ public class RecipeDetailAdapter extends FragmentStatePagerAdapter implements Re
         storage.writeRecipes(recipes);
         Log.d(Recipe.RTAG, "onPay: writerecipes ");
 
+
+
 //        listener.onPay();
 
     }
