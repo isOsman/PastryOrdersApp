@@ -63,19 +63,27 @@ public class TopLevelActivity extends AppCompatActivity {
         }
     }
 
-    private void setAlarm() {
-        Log.d("MYTAG","Start Alarm");
-        Intent intent = new Intent(this,MyReceiver.class);
-        PendingIntent alarmIntent = PendingIntent.getBroadcast(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+    public  void setAlarm() {
+        Intent checkIntent = new Intent(TopLevelActivity.this,MyReceiver.class);
+        boolean hasAlarm = (PendingIntent.getBroadcast(this,0,checkIntent,PendingIntent.FLAG_NO_CREATE) != null);
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY,9);
-        calendar.set(Calendar.MINUTE,25);
 
-        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), TimeUnit.MINUTES.toMillis(5),alarmIntent);
+        if(!hasAlarm) {
+            Log.d("MYTAG", "Start Alarm");
+            Intent intent = new Intent(this, MyReceiver.class);
+            PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        Toast.makeText(this,"Alarm started",Toast.LENGTH_SHORT).show();
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, 12);
+            calendar.set(Calendar.MINUTE, 10);
+
+            AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), TimeUnit.MINUTES.toMillis(5), alarmIntent);
+
+            Toast.makeText(this, "Alarm started", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "Alarm has", Toast.LENGTH_SHORT).show();
+        }
 
     }
 }

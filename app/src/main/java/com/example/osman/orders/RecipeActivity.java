@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 public class RecipeActivity extends AppCompatActivity {
 
+    Storage storage;
     RecyclerView recyclerView;
     RecipeCardAdapter recipeCardAdapter;
 
@@ -33,7 +34,8 @@ public class RecipeActivity extends AppCompatActivity {
 
         ArrayList<Recipe> recipeArrayList = null;
         try {
-            recipeArrayList = Storage.getInstance(this).getRecipes();
+            storage = Storage.getInstance(this);
+            recipeArrayList = storage.getRecipes();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -53,6 +55,29 @@ public class RecipeActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        recipeCardAdapter.notifyDataSetChanged();
+        try {
+            recipeCardAdapter.update(storage.getRecipes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        try {
+            recipeCardAdapter.update(storage.getRecipes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
 }

@@ -24,6 +24,8 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
     private Context context;
 
 
+
+
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public View view;
         public TextView cakeTitle;
@@ -33,6 +35,7 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
         public TextView timeText;
         public ImageView isOpenImg;
         public TextView cakeDesc;
+
 
         public ViewHolder(View card){
             super(card);
@@ -53,6 +56,7 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
         this.dataset = data;
 
     }
+
 
     @NonNull
     @Override
@@ -127,6 +131,7 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
 
 
 
+
     }
 
     @Override
@@ -149,4 +154,12 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
             context.startActivity(intent);
         }
     }
+
+    public void update(ArrayList<Recipe> recipes){
+        this.dataset = recipes;
+        notifyDataSetChanged();
+    }
+
+
+
 }
