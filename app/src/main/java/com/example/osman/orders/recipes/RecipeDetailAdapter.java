@@ -72,7 +72,7 @@ public class RecipeDetailAdapter extends FragmentStatePagerAdapter implements Re
 
     @Override
     public void onPay() throws IOException, ClassNotFoundException {
-        Log.d(Recipe.RTAG, "onPay: ");
+        Log.d(Recipe.RTAG, "onPay: _ recipe: " + recipe.toString());
         payed = true;
         recipe.setOpen(true);
         notifyDataSetChanged();
@@ -84,7 +84,7 @@ public class RecipeDetailAdapter extends FragmentStatePagerAdapter implements Re
         for(Recipe r : recipes){
             if(r.getSKU_ID().equalsIgnoreCase(recipe.getSKU_ID())){
                 r.setOpen(true);
-                Log.d(Recipe.RTAG, "onPay: setopen");
+                Log.d(Recipe.RTAG, "onPay_ setOpen: " + r.getSKU_ID());
                 break;
             }
         }

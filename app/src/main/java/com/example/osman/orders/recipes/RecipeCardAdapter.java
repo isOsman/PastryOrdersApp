@@ -3,6 +3,7 @@ package com.example.osman.orders.recipes;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,9 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
     private ArrayList<Recipe> dataset;
     private Context context;
 
+    private ItemClickListener itemClickListener;
+
+    public static final String TAG = "CR_TAG";
 
 
 
@@ -51,9 +55,10 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
         }
     }
 
-    public RecipeCardAdapter(Context context,ArrayList<Recipe> data){
+    public RecipeCardAdapter(Context context,ArrayList<Recipe> data,ItemClickListener itemClickListener){
         this.context = context;
         this.dataset = data;
+        this.itemClickListener = itemClickListener;
 
     }
 
@@ -74,6 +79,8 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
         int diff_text_id = -1;
 
 
+        Log.d(TAG, "onBindViewHolder _ pos: " + position + ": recipe: " + dataset.get(position).toString());
+
         Picasso.get()
                 .load(dataset.get(position).getImgId())
                 .placeholder(R.drawable.logo)
@@ -82,6 +89,7 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
 
 
         if(dataset.get(position).isOpen()){
+            Log.d(TAG, "onBindViewHolder _ is open : " + dataset.get(position).getSKU_ID());
             holder.isOpenImg.setBackgroundResource(R.drawable.unlock);
             holder.isOpenImg.setBackgroundTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.color_unlock)));
 //            holder.isOpenImg.setColorFilter(context.getResources().getColor(R.color.color_unlock));
@@ -165,15 +173,26 @@ public class RecipeCardAdapter extends RecyclerView.Adapter<RecipeCardAdapter.Vi
         public void onClick(View view) {
             Intent intent = new Intent(context,RecipeDetailActivity.class);
             intent.putExtra(RecipeDetailActivity.RECIPE_EXTRA,dataset.get(itemPos));
+            itemClickListener.onCardClick(itemPos);
             context.startActivity(intent);
         }
     }
 
     public void update(ArrayList<Recipe> recipes){
         this.dataset = recipes;
+        for (Recipe r: dataset){
+            Log.d(TAG, "update _ recipe: " + r.toString());
+        }
         notifyDataSetChanged();
     }
 
+
+
+
+
+    public interface ItemClickListener{
+        void onCardClick(int itemPos);
+    }
 
 
 }

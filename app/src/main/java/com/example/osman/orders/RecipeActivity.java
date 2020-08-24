@@ -14,7 +14,10 @@ import com.example.osman.orders.recipes.RecipeCardAdapter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class RecipeActivity extends AppCompatActivity {
+public class RecipeActivity extends AppCompatActivity implements RecipeCardAdapter.ItemClickListener {
+
+
+    int scroolItem;
 
     Storage storage;
     RecyclerView recyclerView;
@@ -46,7 +49,7 @@ public class RecipeActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        recipeCardAdapter = new RecipeCardAdapter(this,recipeArrayList);
+        recipeCardAdapter = new RecipeCardAdapter(this,recipeArrayList,this);
         recyclerView.setAdapter(recipeCardAdapter);
 
 
@@ -57,6 +60,7 @@ public class RecipeActivity extends AppCompatActivity {
         super.onRestart();
         try {
             recipeCardAdapter.update(storage.getRecipes());
+            resetAdapter(scroolItem);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -69,6 +73,7 @@ public class RecipeActivity extends AppCompatActivity {
         super.onResume();
         try {
             recipeCardAdapter.update(storage.getRecipes());
+            resetAdapter(scroolItem);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -76,8 +81,16 @@ public class RecipeActivity extends AppCompatActivity {
         }
     }
 
+    void resetAdapter(int scrollToItem) throws IOException, ClassNotFoundException {
+        this.recipeCardAdapter = null;
+        recyclerView.setAdapter(recipeCardAdapter);
+        recipeCardAdapter = new RecipeCardAdapter(this,storage.getRecipes(),this);
+        recyclerView.setAdapter(recipeCardAdapter);
+        recyclerView.scrollToPosition(scrollToItem);
+    }
 
-
-
-
+    @Override
+    public void onCardClick(int itemPos) {
+        this.scroolItem = itemPos;
+    }
 }

@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.example.osman.orders.recipes.Recipe;
 import com.example.osman.orders.recipes.RecipeDetailAdapter;
@@ -23,9 +24,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabs;
     private ViewPager viewPager;
-
     private RecipeDetailAdapter pagerAdapter;
-
     private Recipe recipe;
 
 
@@ -35,6 +34,8 @@ public class RecipeDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recipe_detail);
 
         recipe = (Recipe) getIntent().getSerializableExtra(RECIPE_EXTRA);
+
+        Log.d(TAG, "RecipeDetailActivity _ oncreate: " + recipe.getSKU_ID() + " is open: " + recipe.isOpen());
 
 //        Log.d(TAG, recipe.toString());
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -59,5 +60,11 @@ public class RecipeDetailActivity extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return true;
     }
 }
