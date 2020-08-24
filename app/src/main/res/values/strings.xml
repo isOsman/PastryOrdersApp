@@ -63,5 +63,6 @@
     <string name="recipe_pay_thanks">Благодарим вас за покупку.\nПриятного аппетита!</string>
     <string name="add_pay_thanks">Благодарим вас за покупку!</string>
     <string name="dialog_btn_title">Отлично</string>
+    <string name="tips_dialog">Каждый день-новый совет или факт</string>
 </resources>
 

@@ -10,12 +10,14 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.osman.orders.dialog.BasicDialog;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -89,6 +91,18 @@ public class TipActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.tip_list);
         TipAdapter tipAdapter = new TipAdapter(this,R.layout.tip_item,tips,storage);
         listView.setAdapter(tipAdapter);
+
+        try {
+            if (storage.getTipDialogStatus().equals(Request.DIALOG_ON)){
+                BasicDialog dialog = new BasicDialog();
+                dialog.showDialog(this,getString(R.string.tips_dialog));
+                storage.writeTipDialogStatus(Request.DIALOG_OFF);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }

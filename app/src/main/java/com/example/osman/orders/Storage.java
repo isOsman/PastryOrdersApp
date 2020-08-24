@@ -33,6 +33,7 @@ public class Storage {
     private String lastSessionDate = "last_session_date.ord";
     private String recipes = "recipes.ord";
     private String add = "add.ord";
+    private String tipDialog = "tip_dialog.ord";
 
     private FileInputStream fin;
     private FileOutputStream fos;
@@ -44,6 +45,7 @@ public class Storage {
     private File lastDateFile;
     private File recipesFile;
     private File addFile;
+    private File tipDialogFile;
 
     static String TAG = "FILETAG";
 
@@ -194,8 +196,36 @@ public class Storage {
             Log.d(TAG, "addfile status: " + getAddStatus());
         }
 
+        tipDialogFile = new File(root + "/" + folderName,tipDialog);
+        if(!tipDialogFile.exists()){
+            tipDialogFile.createNewFile();
+            Log.d(TAG,"tipDialogFile created: " + tipDialogFile.getAbsolutePath());
+            writeTipDialogStatus(Request.DIALOG_ON);
+        }else{
+            Log.d(TAG,"tipDialogFile ready");
+            Log.d(TAG, "tipDialogFile status: " + getAddStatus());
+        }
+
+
 
     }
+
+
+    public void writeTipDialogStatus(String status) throws IOException {
+        Log.d(TAG,"writeTipDialogtatus()");
+        FileWriter fileWriter = new FileWriter(tipDialogFile);
+        fileWriter.write(status);
+        fileWriter.close();
+    }
+
+    public String getTipDialogStatus() throws FileNotFoundException {
+        Log.d(TAG,"getTipDialogStatus()");
+        Scanner scan = new Scanner(tipDialogFile);
+        String date = scan.next();
+        scan.close();
+        return date;
+    }
+
 
 
     public void writeAddStatus(String status) throws IOException {
