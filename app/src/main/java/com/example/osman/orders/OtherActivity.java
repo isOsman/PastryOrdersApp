@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.osman.orders.dialog.BasicDialog;
+
 import java.io.IOException;
 
 public class OtherActivity extends AppCompatActivity {
@@ -46,6 +48,7 @@ public class OtherActivity extends AppCompatActivity {
                 try {
                     storage.writeAddStatus(Request.ADD_OFF);
                     Request.ADD_IS_ON = false;
+                    new BasicDialog().showDialog(OtherActivity.this,getString(R.string.add_pay_thanks));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
